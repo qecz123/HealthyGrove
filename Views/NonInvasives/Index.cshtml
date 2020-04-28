@@ -23,8 +23,12 @@
         <div class="row">
             <div class="form-horizontal col-md-6 col-md-offset-3" id="formNonInvasive">
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Plant Type</label>
-                    <div class="col-sm-9">
+                    <label class="control-label col-sm-4">
+                        Plant Type&nbsp;
+                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the type of the plant you are looking for in your garden. Select All if not sure.">
+                        </span>
+                    </label>
+                    <div class="col-sm-8">
                         <select class="form-control" id="plantType">
                             <option>All</option>
                             @foreach (var item in Model.OrderBy(x => x.PlantType).GroupBy(x => x.PlantType).Select(y => y.First()).ToList())
@@ -32,11 +36,15 @@
                                 <option value="@Html.DisplayFor(modelItem => item.PlantType)">@Html.DisplayFor(modelItem => item.PlantType)</option>
                             }
                         </select>
+                        
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Maintenance</label>
-                    <div class="col-sm-9">
+                    <label class="control-label col-sm-4">
+                        Maintenance&nbsp;
+                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the level of maintenance of the plants. Select All if not sure."></span>
+                    </label>
+                    <div class="col-sm-8">
                         <select class="form-control" id="maintenance">
                             <option>All</option>
                             @foreach (var item in Model.OrderBy(x => x.Maintenance).GroupBy(x => x.Maintenance).Select(y => y.First()).ToList())
@@ -47,8 +55,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Foliage Colour</label>
-                    <div class="col-sm-9">
+                    <label class="control-label col-sm-4">
+                        Foliage Colour&nbsp;
+                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the leaf colour of the plant you are looking for in your garden. Select All if not sure."></span>
+                    </label>
+                    <div class="col-sm-8">
                         <select class="form-control" id="foliageColour">
                             <option>All</option>
                             @foreach (var item in Model.OrderBy(x => x.FoliageColour).GroupBy(x => x.FoliageColour).Select(y => y.First()).ToList())
@@ -59,7 +70,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-10">
+                    <div class="col-sm-offset-4 col-sm-10">
                         <button type="button" id="submit" class="btn btn-success" onclick="submit()">Submit</button>
                     </div>
                 </div>

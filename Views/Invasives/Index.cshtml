@@ -20,8 +20,11 @@
         <div class="row">
             <div class="form-horizontal col-md-6 col-md-offset-3" id="formInvasive">
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Plant Type</label>
-                    <div class="col-sm-9">
+                    <label class="control-label col-sm-4">
+                        Plant Type&nbsp;
+                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the possible type of the plant. Select All if not sure."></span>
+                    </label>
+                    <div class="col-sm-8">
                         <select class="form-control" id="plantType">
                             <option>All</option>
                             @foreach (var item in Model.OrderBy(x => x.PlantType).GroupBy(x => x.PlantType).Select(y => y.First()).ToList())
@@ -32,8 +35,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Flower Colour</label>
-                    <div class="col-sm-9">
+                    <label class="control-label col-sm-4">
+                        Flower Colour&nbsp;
+                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the flower colour of the plant. Select All if not sure."></span>
+                    </label>
+                    <div class="col-sm-8">
                         <select class="form-control" id="flowerColour">
                             <option>All</option>
                             @foreach (var item in Model.OrderBy(x => x.FlowerColour).GroupBy(x => x.FlowerColour).Select(y => y.First()).ToList())
@@ -44,8 +50,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Leaf Colour</label>
-                    <div class="col-sm-9">
+                    <label class="control-label col-sm-4">
+                        Leaf Colour&nbsp;
+                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the leaf colour of the plant. Select All if not sure."></span>
+                    </label>
+                    <div class="col-sm-8">
                         <select class="form-control" id="leafColour">
                             <option>All</option>
                             @foreach (var item in Model.OrderBy(x => x.LeafColour).GroupBy(x => x.LeafColour).Select(y => y.First()).ToList())
@@ -56,7 +65,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-10">
+                    <div class="col-sm-offset-4 col-sm-10">
                         <button type="button" id="submit" class="btn btn-success" onclick="submit()">Submit</button>
                     </div>
                 </div>
