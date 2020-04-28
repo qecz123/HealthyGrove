@@ -1,0 +1,40 @@
+﻿@model IEnumerable<HealthyGrove.Models.SavedInvasive>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Invasive.ScientificName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Invasive.ScientificName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SavedInvasiveId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SavedInvasiveId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SavedInvasiveId })
+        </td>
+    </tr>
+}
+
+</table>

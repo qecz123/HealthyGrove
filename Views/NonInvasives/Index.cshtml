@@ -1,0 +1,247 @@
+﻿@model IEnumerable<HealthyGrove.Models.NonInvasive>
+
+@{
+    ViewBag.Title = "Find Non Invasive Plants";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container">
+    <h5>
+        @Html.ActionLink("Home", "Index", "Home")
+        &nbsp;/&nbsp;
+        @ViewBag.Title
+    </h5>
+    <h2 class="text-center">Find Invasive Plants</h2>
+    <hr />
+    <!-- Filters -->
+
+</div>
+<div class="container" style="margin-top:60px">
+    <div class="container-fluid" id="form">
+        <div class="row">
+            <div class="form-horizontal col-md-6 col-md-offset-3" id="formNonInvasive">
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Plant Type</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" id="plantType">
+                            <option>All</option>
+                            @foreach (var item in Model.OrderBy(x => x.PlantType).GroupBy(x => x.PlantType).Select(y => y.First()).ToList())
+                            {
+                                <option value="@Html.DisplayFor(modelItem => item.PlantType)">@Html.DisplayFor(modelItem => item.PlantType)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Maintenance</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" id="maintenance">
+                            <option>All</option>
+                            @foreach (var item in Model.OrderBy(x => x.Maintenance).GroupBy(x => x.Maintenance).Select(y => y.First()).ToList())
+                            {
+                                <option value="@Html.DisplayFor(modelItem => item.Maintenance)">@Html.DisplayFor(modelItem => item.Maintenance)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Foliage Colour</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" id="foliageColour">
+                            <option>All</option>
+                            @foreach (var item in Model.OrderBy(x => x.FoliageColour).GroupBy(x => x.FoliageColour).Select(y => y.First()).ToList())
+                            {
+                                <option value="@Html.DisplayFor(modelItem => item.FoliageColour)">@Html.DisplayFor(modelItem => item.FoliageColour)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-10">
+                        <button type="button" id="submit" class="btn btn-success" onclick="submit()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" id="result" style="display:none">
+
+    <div class="row">
+        <div class="col-lg-offset-1">
+            <div>&nbsp;</div>
+            <h2>View as:</h2>
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary active">
+                    <input type="radio" name="view" value="grid" checked> Grid
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="view" value="table"> Table
+                </label>
+
+            </div>
+            <div>&nbsp;</div>
+        </div>
+
+        <div class="row" id="grid">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-12 col-md-4 card-container" data-plantType="@Html.Raw(item.PlantType)" data-foliageColour="@Html.Raw(item.FoliageColour)" data-maintenance="@Html.Raw(item.Maintenance)">
+                    <div class="card-find">
+
+                        <div class="thumbnail">
+                            <div class="img-container"><img src="@Html.Raw(item.Image)" style="margin:auto;" class="text-center"></div>
+                            <div class="caption">
+                                <h3>@Html.DisplayFor(modelItem => item.CommonName)</h3>
+                                <h4 class="text-muted"><em>@Html.DisplayFor(modelItem => item.ScientificName)</em></h4>
+                                <hr />
+                                <p>
+                                    <a href="@Url.Action("Details", new { id=item.NonInvasiveId })" class="btn btn-primary">Show Details <i class="glyphicon glyphicon-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+        <div class="container-fluid" id="table" style="display:none">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ScientificName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CommonName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PlantType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Maintenance)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FoliageColour)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ScientificName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CommonName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PlantType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Maintenance)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FoliageColour)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Details", "Details", new { id = item.NonInvasiveId })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
+    @Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap.js")
+    <script>
+        $.fn.dataTable.ext.search.push(
+            function (settings, data, dataIndex) {
+                var typeselected = $("#plantType").val();
+                var mainselected = $("#maintenance").val();
+                var foliageselected = $("#foliageColour").val();
+                var type = data[2];
+                var main = data[3];
+                var foliage = data[4];
+                var mtype = false; //true if type matches.
+                var mmain = false;
+                var mfoliage = false;
+
+                if (typeselected == 'All' || typeselected == type) {
+                    mtype = true;
+                }
+                if (mainselected == 'All' || mainselected == main) {
+                    mmain = true;
+                }
+                if (foliageselected == 'All' || foliageselected == foliage) {
+                    mfoliage = true;
+                }
+
+                //console.log(mtype, mmain, mleaf);
+
+                if (mtype && mmain && mfoliage) {
+                    return true;
+                }
+
+                return false;
+            }
+        )
+        $(document).ready(function () {
+            var table = $('.table').DataTable();
+            $("#submit").click(function () {
+                var typeselected = $("#plantType").val();
+                var mainselected = $("#maintenance").val();
+                var foliageselected = $("#foliageColour").val();
+
+                //$(".card-container").show();
+                //$("#result").show();
+
+                if (typeselected != 'All') {
+                    $('.card-container[data-plantType!="' + typeselected + '"]').hide();
+                }
+
+                if (mainselected != 'All') {
+                    $('.card-container[data-maintenance!="' + mainselected + '"]').hide();
+                }
+
+                if (foliageselected != 'All') {
+                    $('.card-container[data-foliageColour!="' + foliageselected + '"]').hide();
+                }
+
+
+                table.draw();
+
+            })
+
+            $("input[name='view']").on('change', function () {
+                if ($(this).val() == 'grid') {
+                    $("#table").hide();
+                    $("#grid").show();
+                }
+                else {
+                    $("#table").show();
+                    $("#grid").hide();
+                }
+            })
+
+        });
+
+        function submit() {
+            var x = document.getElementById("result");
+            x.style.display = "block";
+        };
+
+
+    </script>
+}
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css"
+      rel="stylesheet" />

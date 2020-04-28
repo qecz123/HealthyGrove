@@ -1,0 +1,35 @@
+﻿@model HealthyGrove.Models.SavedNonInvasive
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SavedNonInvasive</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NonInvasive.ScientificName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NonInvasive.ScientificName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SavedNonInvasiveId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

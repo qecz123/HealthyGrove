@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HealthyGrove_Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="HealthyGrove_ModelStoreContainer">
+    <EntitySet Name="InvasiveSet" EntityType="HealthyGrove_Model.Store.InvasiveSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NonInvasiveSet" EntityType="HealthyGrove_Model.Store.NonInvasiveSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SavedInvasiveSet" EntityType="HealthyGrove_Model.Store.SavedInvasiveSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SavedNonInvasiveSet" EntityType="HealthyGrove_Model.Store.SavedNonInvasiveSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NurserySet" EntityType="HealthyGrove_Model.Store.NurserySet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="InvasiveSavedInvasive" Association="HealthyGrove_Model.Store.InvasiveSavedInvasive">
+      <End Role="Invasive" EntitySet="InvasiveSet" />
+      <End Role="SavedInvasive" EntitySet="SavedInvasiveSet" />
+    </AssociationSet>
+    <AssociationSet Name="NonInvasiveSavedNonInvasive" Association="HealthyGrove_Model.Store.NonInvasiveSavedNonInvasive">
+      <End Role="NonInvasive" EntitySet="NonInvasiveSet" />
+      <End Role="SavedNonInvasive" EntitySet="SavedNonInvasiveSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="InvasiveSet">
+    <Key>
+      <PropertyRef Name="InvasiveId" />
+    </Key>
+    <Property Name="InvasiveId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScientificName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CommonName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PlantType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WeedStatus" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="VictorianStatus" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Area_of_potential_distribution_remaining" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Potential_for_invasion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RiskRating" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Family" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="VictorianBiomes" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Impact_on_natural_systems" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Native" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Rate_of_dispersal" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HeightRanges" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SpreadRanges" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FlowerColour" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LeafColour" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClimateZones" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Abcission" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SoilType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LightNeeds" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Impact_score" Type="int" Nullable="true" />
+    <Property Name="Potential_distribution_score" Type="int" Nullable="true" />
+    <Property Name="Residual_risk_score" Type="int" Nullable="true" />
+    <Property Name="Invasiveness_score" Type="int" Nullable="true" />
+    <Property Name="Rate_of_dispersal_score" Type="int" Nullable="true" />
+    <Property Name="Urgency_score" Type="int" Nullable="true" />
+    <Property Name="Risk_ranking_score" Type="float" Nullable="true" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NonInvasiveSet">
+    <Key>
+      <PropertyRef Name="NonInvasiveId" />
+    </Key>
+    <Property Name="NonInvasiveId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScientificName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CommonName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PlantType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Maintenance" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FlowerColour" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FoliageColour" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HeightRanges" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Native" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SpreadRanges" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClimateZones" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WaterNeeds" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LightNeeds" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SoilType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FrostTolerance" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Abcission" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SavedInvasiveSet">
+    <Key>
+      <PropertyRef Name="SavedInvasiveId" />
+    </Key>
+    <Property Name="SavedInvasiveId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="InvasiveId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SavedNonInvasiveSet">
+    <Key>
+      <PropertyRef Name="SavedNonInvasiveId" />
+    </Key>
+    <Property Name="SavedNonInvasiveId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NonInvasiveId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NurserySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NurseryName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Suburb" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Postcode" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="InvasiveSavedInvasive">
+    <End Role="Invasive" Type="HealthyGrove_Model.Store.InvasiveSet" Multiplicity="1" />
+    <End Role="SavedInvasive" Type="HealthyGrove_Model.Store.SavedInvasiveSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invasive">
+        <PropertyRef Name="InvasiveId" />
+      </Principal>
+      <Dependent Role="SavedInvasive">
+        <PropertyRef Name="InvasiveId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NonInvasiveSavedNonInvasive">
+    <End Role="NonInvasive" Type="HealthyGrove_Model.Store.NonInvasiveSet" Multiplicity="1" />
+    <End Role="SavedNonInvasive" Type="HealthyGrove_Model.Store.SavedNonInvasiveSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NonInvasive">
+        <PropertyRef Name="NonInvasiveId" />
+      </Principal>
+      <Dependent Role="SavedNonInvasive">
+        <PropertyRef Name="NonInvasiveId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="HealthyGrove_Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="HealthyGrove_ModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="InvasiveSet" EntityType="HealthyGrove_Model.Invasive" />
+          <EntitySet Name="NonInvasiveSet" EntityType="HealthyGrove_Model.NonInvasive" />
+          <EntitySet Name="SavedInvasiveSet" EntityType="HealthyGrove_Model.SavedInvasive" />
+          <EntitySet Name="SavedNonInvasiveSet" EntityType="HealthyGrove_Model.SavedNonInvasive" />
+          <AssociationSet Name="InvasiveSavedInvasive" Association="HealthyGrove_Model.InvasiveSavedInvasive">
+            <End Role="Invasive" EntitySet="InvasiveSet" />
+            <End Role="SavedInvasive" EntitySet="SavedInvasiveSet" />
+          </AssociationSet>
+          <AssociationSet Name="NonInvasiveSavedNonInvasive" Association="HealthyGrove_Model.NonInvasiveSavedNonInvasive">
+            <End Role="NonInvasive" EntitySet="NonInvasiveSet" />
+            <End Role="SavedNonInvasive" EntitySet="SavedNonInvasiveSet" />
+          </AssociationSet>
+          <EntitySet Name="NurserySet" EntityType="HealthyGrove_Model.Nursery" />
+        </EntityContainer>
+        <EntityType Name="Invasive">
+          <Key>
+            <PropertyRef Name="InvasiveId" />
+          </Key>
+          <Property Name="InvasiveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScientificName" Type="String" Nullable="false" />
+          <Property Name="CommonName" Type="String" Nullable="false" />
+          <Property Name="PlantType" Type="String" Nullable="false" />
+          <Property Name="WeedStatus" Type="String" Nullable="false" />
+          <Property Name="VictorianStatus" Type="String" Nullable="false" />
+          <Property Name="Area_of_potential_distribution_remaining" Type="String" Nullable="false" />
+          <Property Name="Potential_for_invasion" Type="String" Nullable="false" />
+          <Property Name="RiskRating" Type="String" Nullable="false" />
+          <Property Name="Family" Type="String" Nullable="false" />
+          <Property Name="VictorianBiomes" Type="String" Nullable="false" />
+          <Property Name="Impact_on_natural_systems" Type="String" Nullable="false" />
+          <Property Name="Native" Type="String" Nullable="false" />
+          <Property Name="Rate_of_dispersal" Type="String" Nullable="false" />
+          <Property Name="HeightRanges" Type="String" Nullable="false" />
+          <Property Name="SpreadRanges" Type="String" Nullable="false" />
+          <Property Name="FlowerColour" Type="String" Nullable="false" />
+          <Property Name="LeafColour" Type="String" Nullable="false" />
+          <Property Name="ClimateZones" Type="String" Nullable="false" />
+          <Property Name="Abcission" Type="String" Nullable="false" />
+          <Property Name="SoilType" Type="String" Nullable="false" />
+          <Property Name="LightNeeds" Type="String" Nullable="false" />
+          <Property Name="Impact_score" Type="Int32" Nullable="true" />
+          <Property Name="Potential_distribution_score" Type="Int32" Nullable="true" />
+          <Property Name="Residual_risk_score" Type="Int32" Nullable="true" />
+          <Property Name="Invasiveness_score" Type="Int32" Nullable="true" />
+          <Property Name="Rate_of_dispersal_score" Type="Int32" Nullable="true" />
+          <Property Name="Urgency_score" Type="Int32" Nullable="true" />
+          <Property Name="Risk_ranking_score" Type="Double" Nullable="true" />
+          <NavigationProperty Name="SavedInvasive" Relationship="HealthyGrove_Model.InvasiveSavedInvasive" FromRole="Invasive" ToRole="SavedInvasive" />
+          <Property Name="Image" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NonInvasive">
+          <Key>
+            <PropertyRef Name="NonInvasiveId" />
+          </Key>
+          <Property Name="NonInvasiveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScientificName" Type="String" Nullable="false" />
+          <Property Name="CommonName" Type="String" Nullable="false" />
+          <Property Name="PlantType" Type="String" Nullable="false" />
+          <Property Name="Maintenance" Type="String" Nullable="false" />
+          <Property Name="FlowerColour" Type="String" Nullable="false" />
+          <Property Name="FoliageColour" Type="String" Nullable="false" />
+          <Property Name="HeightRanges" Type="String" Nullable="false" />
+          <Property Name="Native" Type="String" Nullable="false" />
+          <Property Name="SpreadRanges" Type="String" Nullable="false" />
+          <Property Name="ClimateZones" Type="String" Nullable="false" />
+          <Property Name="WaterNeeds" Type="String" Nullable="false" />
+          <Property Name="LightNeeds" Type="String" Nullable="false" />
+          <Property Name="SoilType" Type="String" Nullable="false" />
+          <Property Name="FrostTolerance" Type="String" Nullable="false" />
+          <Property Name="Abcission" Type="String" Nullable="false" />
+          <NavigationProperty Name="SavedNonInvasive" Relationship="HealthyGrove_Model.NonInvasiveSavedNonInvasive" FromRole="NonInvasive" ToRole="SavedNonInvasive" />
+          <Property Name="Image" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SavedInvasive">
+          <Key>
+            <PropertyRef Name="SavedInvasiveId" />
+          </Key>
+          <Property Name="SavedInvasiveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="InvasiveId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Invasive" Relationship="HealthyGrove_Model.InvasiveSavedInvasive" FromRole="SavedInvasive" ToRole="Invasive" />
+        </EntityType>
+        <EntityType Name="SavedNonInvasive">
+          <Key>
+            <PropertyRef Name="SavedNonInvasiveId" />
+          </Key>
+          <Property Name="SavedNonInvasiveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="NonInvasiveId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NonInvasive" Relationship="HealthyGrove_Model.NonInvasiveSavedNonInvasive" FromRole="SavedNonInvasive" ToRole="NonInvasive" />
+        </EntityType>
+        <Association Name="InvasiveSavedInvasive">
+          <End Type="HealthyGrove_Model.Invasive" Role="Invasive" Multiplicity="1" />
+          <End Type="HealthyGrove_Model.SavedInvasive" Role="SavedInvasive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invasive">
+              <PropertyRef Name="InvasiveId" />
+            </Principal>
+            <Dependent Role="SavedInvasive">
+              <PropertyRef Name="InvasiveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="NonInvasiveSavedNonInvasive">
+          <End Type="HealthyGrove_Model.NonInvasive" Role="NonInvasive" Multiplicity="1" />
+          <End Type="HealthyGrove_Model.SavedNonInvasive" Role="SavedNonInvasive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonInvasive">
+              <PropertyRef Name="NonInvasiveId" />
+            </Principal>
+            <Dependent Role="SavedNonInvasive">
+              <PropertyRef Name="NonInvasiveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Nursery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NurseryName" Type="String" Nullable="false" />
+          <Property Name="Suburb" Type="String" Nullable="false" />
+          <Property Name="Postcode" Type="String" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HealthyGrove_ModelStoreContainer" CdmEntityContainer="HealthyGrove_ModelContainer">
+    <EntitySetMapping Name="InvasiveSet">
+      <EntityTypeMapping TypeName="IsTypeOf(HealthyGrove_Model.Invasive)">
+        <MappingFragment StoreEntitySet="InvasiveSet">
+          <ScalarProperty Name="InvasiveId" ColumnName="InvasiveId" />
+          <ScalarProperty Name="ScientificName" ColumnName="ScientificName" />
+          <ScalarProperty Name="CommonName" ColumnName="CommonName" />
+          <ScalarProperty Name="PlantType" ColumnName="PlantType" />
+          <ScalarProperty Name="WeedStatus" ColumnName="WeedStatus" />
+          <ScalarProperty Name="VictorianStatus" ColumnName="VictorianStatus" />
+          <ScalarProperty Name="Area_of_potential_distribution_remaining" ColumnName="Area_of_potential_distribution_remaining" />
+          <ScalarProperty Name="Potential_for_invasion" ColumnName="Potential_for_invasion" />
+          <ScalarProperty Name="RiskRating" ColumnName="RiskRating" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="VictorianBiomes" ColumnName="VictorianBiomes" />
+          <ScalarProperty Name="Impact_on_natural_systems" ColumnName="Impact_on_natural_systems" />
+          <ScalarProperty Name="Native" ColumnName="Native" />
+          <ScalarProperty Name="Rate_of_dispersal" ColumnName="Rate_of_dispersal" />
+          <ScalarProperty Name="HeightRanges" ColumnName="HeightRanges" />
+          <ScalarProperty Name="SpreadRanges" ColumnName="SpreadRanges" />
+          <ScalarProperty Name="FlowerColour" ColumnName="FlowerColour" />
+          <ScalarProperty Name="LeafColour" ColumnName="LeafColour" />
+          <ScalarProperty Name="ClimateZones" ColumnName="ClimateZones" />
+          <ScalarProperty Name="Abcission" ColumnName="Abcission" />
+          <ScalarProperty Name="SoilType" ColumnName="SoilType" />
+          <ScalarProperty Name="LightNeeds" ColumnName="LightNeeds" />
+          <ScalarProperty Name="Impact_score" ColumnName="Impact_score" />
+          <ScalarProperty Name="Potential_distribution_score" ColumnName="Potential_distribution_score" />
+          <ScalarProperty Name="Residual_risk_score" ColumnName="Residual_risk_score" />
+          <ScalarProperty Name="Invasiveness_score" ColumnName="Invasiveness_score" />
+          <ScalarProperty Name="Rate_of_dispersal_score" ColumnName="Rate_of_dispersal_score" />
+          <ScalarProperty Name="Urgency_score" ColumnName="Urgency_score" />
+          <ScalarProperty Name="Risk_ranking_score" ColumnName="Risk_ranking_score" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NonInvasiveSet">
+      <EntityTypeMapping TypeName="IsTypeOf(HealthyGrove_Model.NonInvasive)">
+        <MappingFragment StoreEntitySet="NonInvasiveSet">
+          <ScalarProperty Name="NonInvasiveId" ColumnName="NonInvasiveId" />
+          <ScalarProperty Name="ScientificName" ColumnName="ScientificName" />
+          <ScalarProperty Name="CommonName" ColumnName="CommonName" />
+          <ScalarProperty Name="PlantType" ColumnName="PlantType" />
+          <ScalarProperty Name="Maintenance" ColumnName="Maintenance" />
+          <ScalarProperty Name="FlowerColour" ColumnName="FlowerColour" />
+          <ScalarProperty Name="FoliageColour" ColumnName="FoliageColour" />
+          <ScalarProperty Name="HeightRanges" ColumnName="HeightRanges" />
+          <ScalarProperty Name="Native" ColumnName="Native" />
+          <ScalarProperty Name="SpreadRanges" ColumnName="SpreadRanges" />
+          <ScalarProperty Name="ClimateZones" ColumnName="ClimateZones" />
+          <ScalarProperty Name="WaterNeeds" ColumnName="WaterNeeds" />
+          <ScalarProperty Name="LightNeeds" ColumnName="LightNeeds" />
+          <ScalarProperty Name="SoilType" ColumnName="SoilType" />
+          <ScalarProperty Name="FrostTolerance" ColumnName="FrostTolerance" />
+          <ScalarProperty Name="Abcission" ColumnName="Abcission" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SavedInvasiveSet">
+      <EntityTypeMapping TypeName="IsTypeOf(HealthyGrove_Model.SavedInvasive)">
+        <MappingFragment StoreEntitySet="SavedInvasiveSet">
+          <ScalarProperty Name="SavedInvasiveId" ColumnName="SavedInvasiveId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="InvasiveId" ColumnName="InvasiveId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SavedNonInvasiveSet">
+      <EntityTypeMapping TypeName="IsTypeOf(HealthyGrove_Model.SavedNonInvasive)">
+        <MappingFragment StoreEntitySet="SavedNonInvasiveSet">
+          <ScalarProperty Name="SavedNonInvasiveId" ColumnName="SavedNonInvasiveId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="NonInvasiveId" ColumnName="NonInvasiveId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NurserySet">
+      <EntityTypeMapping TypeName="IsTypeOf(HealthyGrove_Model.Nursery)">
+        <MappingFragment StoreEntitySet="NurserySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NurseryName" ColumnName="NurseryName" />
+          <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+          <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,172 @@
+﻿body {
+}
+
+.jumbotron {
+    height: 400px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../Image/Jumbotron/garden.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+    text-shadow: 1px 1px #000;
+    color: white;
+}
+
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.row-space {
+    margin: 30px
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.card {
+    border: 5px;
+    border-radius: 10px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    margin: 5px;
+    padding: 10px;
+    background-color: white
+}
+
+.card:hover .overlay {
+    opacity: 1;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.step {
+    border: 1px;
+    border-radius: 10px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    margin:10px;
+    padding:10px;
+    background-color: white
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #eee;
+}
+
+tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+th {
+    color: white;
+    background-color: #4CAF50;
+}
+
+/*!
+ * reference: https://www.w3schools.com/howto/howto_css_menu_horizontal_scroll.asp
+ */
+div.scrollmenu {
+    background-color: white;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+    div.scrollmenu div {
+        display: inline-block;
+        color: black;
+        text-align: center;
+        padding: 14px;
+        text-decoration: none;
+    }
+
+
+.thumbnail img {
+    margin: 5px;
+    width: 100%!important;
+    max-height: 250px;
+    transition:0.3s all ease;
+    object-fit: cover;
+}
+
+.img-container{
+    height:250px;
+}
+
+.thumbnail img:hover{
+    transform:scale(1.1,1.1);
+}
+
+.thumbnail {
+    overflow:hidden;
+    box-shadow:0px 3px 5px rgba(0,0,0,0.3);
+    min-height:438px;
+}
+
+.navbar a{
+    font-size:16px;
+}
+
+.card-custom{
+    height:200px!important;
+    overflow:hidden;
+}
+
+.card-find img{
+    max-width:100%;
+}
+
+.card-tile{
+    background:#fff;
+    color:#666;
+    border-radius:5px;
+    box-shadow:0px 0px 5px rgba(0,0,0,0.5);
+    padding:10px;
+}
+
+.card-tile img{
+    border-radius:50%;
+    background-color:#e6e6e6;
+    margin:auto;
+    text-align:center;
+    max-height:75px;
+    max-width:75px;
+}
+
+.card-tile .title{
+    font-weight:bold;
+    margin-top:20px;
+}

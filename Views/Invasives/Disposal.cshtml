@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Disposal of Weeds";
+}
+
+<div class="container">
+    <h5>
+        @Html.ActionLink("Home", "Index", "Home")
+        &nbsp;/&nbsp;
+        @Html.ActionLink("Find Invasive Plants", "Index")
+        &nbsp;/&nbsp;
+        @ViewBag.Title
+    </h5>
+    <h2 class="text-center">@ViewBag.Title</h2>
+    <hr />
+</div>
+
+<div class="container">
+    <div class="text-center">
+        <h3>Green Waste Disposal</h3>
+        <p>Poor disposal, such as dumping garden waste in bushland, is one of the main ways that weeds escape from gardens and start growing in bushland and waterways. Some of the ways that you can help minimise the spread of weeds through responsible disposal of garden waste include:</p>
+    </div>
+    <ul>
+        <li>Never dump garden waste over the back fence or in bushland.</li>
+        <li>Dispose of weeds that are already seeding or readily able to reproduce vegetatively, including through suckers and bulbs, by placing them in a black plastic bag, sealing it and 'baking it' in the sun until destroyed. This method alone may not kill all parts of the weed, for example bulbs, and may need to be used in combination with other methods such as mulching. If unsure, contact on expert for advice.</li>
+        <li>Cover your compost so that seeds cannot be distributed by wind or animals.</li>
+        <li>Be careful when mulching weeds.</li>
+        <li>Remove seed heads from plants before they have time to mature and disperse.</li>
+        <li>Compost or dispose of garden and green waste in council green waste collections or by carefully transporting it to your council's green waste tip.</li>
+        <li>Always cover trailers when transporting plant material to prevent seeds and other live plant material falling off.</li>
+        <li>Consider carefully what plants you buy for ponds and aquariums and never dump aquarium water or contents down drains or into waterways.</li>
+        <li>Report any weed infested vacant blocks to the local council.</li>
+    </ul>
+    <div class="row">
+        <div class="col-sm-12 row-space">
+            <img src="~/Image/Invasives/gree_waste_disposal.jpg" class="img-responsive center-block">
+        </div>
+    </div>
+    <div class="row text-center">
+        <a href="@Url.Action("Index", "NonInvasives")" class="btn btn-success" role="button">Find Non Invasive Plants Suitable For Your Garden</a>
+    </div>
+</div>    

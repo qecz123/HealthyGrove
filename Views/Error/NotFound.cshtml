@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Something goes Wrong";
+}
+
+    <div class="container">
+        <h5>
+            &nbsp;
+        </h5>
+        <h2 class="text-center">
+            <strong>
+                @ViewBag.Title
+            </strong>
+        </h2>
+        <hr />
+
+        <div class="text-center" style="color:red">
+            <h1>
+                Oooooooops!!!
+            </h1>
+            <div>&nbsp;</div>
+            <h3>
+                Sorry, The Page, You are Looking for is not found!
+            </h3>
+            <div>&nbsp;</div>
+            <h4>@Html.ActionLink("Go Back To Home Page", "Index", "Home")</h4>
+            <br />
+            <br />
+        </div>
+
+    </div>

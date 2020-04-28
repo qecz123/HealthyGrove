@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Locate Nursery";
+}
+
+<div class="container">
+    <h5>
+        @Html.ActionLink("Home", "Index", "Home")
+        &nbsp;/&nbsp;
+        @Html.ActionLink("Find Non Invasive Plants", "Index", "NonInvasives")
+        &nbsp;/&nbsp;
+        @ViewBag.Title
+    </h5>
+    <h2 class="text-center">@ViewBag.Title</h2>
+    <hr />
+</div>
+
+<div class="container">
+    <p>To find Non-Invasive plant seeds near you:</p>
+    <label class="control-label">Enter your postcode</label>
+    <input type="text" class="form-control" id="postcode">
+    <button type="button" class="btn btn-default" onclick=findNursery()>Search</button>
+    <div>&nbsp;</div>
+    <div id="map" style="height: 600px;"></div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/mapbox")
+}
