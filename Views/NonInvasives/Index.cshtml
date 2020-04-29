@@ -25,8 +25,10 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4">
                         Plant Type&nbsp;
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the type of the plant you are looking for in your garden. Select All if not sure.">
-                        </span>
+                        <a href="@Url.Action("FAQ", "Home")#type">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the type of the plant you are looking for in your garden. Select All if not sure.  Click for more information.">
+                            </span>
+                        </a>
                     </label>
                     <div class="col-sm-8">
                         <select class="form-control" id="plantType">
@@ -36,13 +38,15 @@
                                 <option value="@Html.DisplayFor(modelItem => item.PlantType)">@Html.DisplayFor(modelItem => item.PlantType)</option>
                             }
                         </select>
-                        
+
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-4">
                         Maintenance&nbsp;
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the level of maintenance of the plants. Select All if not sure."></span>
+                        <a href="@Url.Action("FAQ", "Home")#main">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the level of maintenance of the plants. Select All if not sure.  Click for more information."></span>
+                        </a>
                     </label>
                     <div class="col-sm-8">
                         <select class="form-control" id="maintenance">
@@ -57,7 +61,9 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4">
                         Foliage Colour&nbsp;
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the leaf colour of the plant you are looking for in your garden. Select All if not sure."></span>
+                        <a href="@Url.Action("FAQ", "Home")#leaf">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the leaf colour of the plant you are looking for in your garden. Select All if not sure. Click for more information."></span>
+                        </a>
                     </label>
                     <div class="col-sm-8">
                         <select class="form-control" id="foliageColour">

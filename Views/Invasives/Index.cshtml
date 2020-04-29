@@ -22,7 +22,10 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4">
                         Plant Type&nbsp;
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the possible type of the plant. Select All if not sure."></span>
+                        <a href="@Url.Action("FAQ", "Home")#type">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the possible type of the plant. Select All if not sure. Click for more information.">
+                            </span>
+                        </a>
                     </label>
                     <div class="col-sm-8">
                         <select class="form-control" id="plantType">
@@ -37,7 +40,9 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4">
                         Flower Colour&nbsp;
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the flower colour of the plant. Select All if not sure."></span>
+                        <a href="@Url.Action("FAQ", "Home")#flower">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the flower colour of the plant. Select All if not sure.  Click for more information."></span>
+                        </a>
                     </label>
                     <div class="col-sm-8">
                         <select class="form-control" id="flowerColour">
@@ -52,7 +57,9 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4">
                         Leaf Colour&nbsp;
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the leaf colour of the plant. Select All if not sure."></span>
+                        <a href="@Url.Action("FAQ", "Home")#leaf">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the leaf colour of the plant. Select All if not sure.  Click for more information."></span>
+                        </a>
                     </label>
                     <div class="col-sm-8">
                         <select class="form-control" id="leafColour">
