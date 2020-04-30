@@ -402,6 +402,9 @@
     <Content Include="Image\Invasives\Steps\step5.jpg" />
     <Content Include="Image\Invasives\Steps\step6.jpg" />
     <Content Include="Image\Jumbotron\garden.jpg" />
+    <Content Include="Image\Logo_HG.png" />
+    <Content Include="Image\logo_flowers.png" />
+    <Content Include="Image\logo_text.png" />
     <Content Include="Image\logo.png" />
     <Content Include="Image\PlantImage\Invasive\Aloe_maculata2.jpg" />
     <Content Include="Image\PlantImage\Invasive\Aponogeton_distachyos.jpg" />
@@ -562,6 +565,7 @@
     <Content Include="Image\PlantImage\Invasive\WinterJasmine.jpg" />
     <Content Include="Image\PlantImage\Invasive\YellowAlstroemeria.jpg" />
     <Content Include="Image\PlantImage\Invasive\YellowAlstroemeria2.jpg" />
+    <Content Include="Image\PlantImage\Logo_PNG_Text.png" />
     <Content Include="Image\PlantImage\NonInvasive\acacia_decora.jpg" />
     <Content Include="Image\PlantImage\NonInvasive\acacia_maidenii.jpg" />
     <Content Include="Image\PlantImage\NonInvasive\acacia_melanoxylon.jpg" />
