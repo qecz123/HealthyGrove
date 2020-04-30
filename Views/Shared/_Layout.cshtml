@@ -44,7 +44,10 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Solutions", "AboutPlants", "Home")</li>
+                    <li>@Html.ActionLink("Remove Weeds", "RemoveWeed", "Invasives")</li>
+                    <li>@Html.ActionLink("Weed Disposal", "Disposal", "Invasives")</li>
                     <li>@Html.ActionLink("Nursery", "FindNursery", "Home")</li>
+                    <li>@Html.ActionLink("FAQ", "FAQ", "Home")</li>
                 </ul>
 
                 @*@Html.Partial("_LoginPartial")*@
@@ -62,7 +65,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h3 style="">About Us</h3>
-                    <p>Healthy Grove aims to be a platform used by a majority of Victorian home gardeners. We are dedicated to provide access to up-to-date information regarding Invasive Plants and help these gardeners to use a sustainable approach towards the containment and eradication of Invasive Weeds. This will help save their gardens, the environment and maintain balance in the ecological system.</p>
+                    <p>GardenBloomVic aims to be a platform used by a majority of Victorian home gardeners. We are dedicated to provide access to up-to-date information regarding Invasive Plants and help these gardeners to use a sustainable approach towards the containment and eradication of Invasive Weeds. This will help save their gardens, the environment and maintain balance in the ecological system.</p>
                 </div>
             </div>
         </div>
@@ -71,7 +74,8 @@
     <footer style="background-color:#18212b; color:darkgray">
         <div class="container" style="padding:10px">
             <div class="row">
-                <div class="col-lg-12 text-center text-white">&copy; @DateTime.Now.Year - HealhyGrove</div>
+                <div class="col-lg-12 text-center text-white">
+                    &copy; @DateTime.Now.Year - GardenBloomVic</div>
             </div>
         </div>
     </footer>

@@ -13,20 +13,29 @@
         &nbsp;/&nbsp;
         @ViewBag.Title
     </h5>
-    <h2 class="text-center">Find Invasive Plants</h2>
+    <h2 class="text-center">Non-Invasive Plant Search</h2>
     <hr />
     <!-- Filters -->
 
 </div>
-<div class="container" style="margin-top:60px">
+
+<div class="container text-center" style="padding-left:100px; padding-right:100px">
+    <h4>
+        Looking for ‘good’ garden plants. Check out for non-invasive plants that are suitable for your garden based on your personal preference
+    </h4>
+</div>
+
+<div class="container" style="margin-top:40px">
     <div class="container-fluid" id="form">
         <div class="row">
             <div class="form-horizontal col-md-6 col-md-offset-3" id="formNonInvasive">
                 <div class="form-group">
                     <label class="control-label col-sm-4">
                         Plant Type&nbsp;
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the type of the plant you are looking for in your garden. Select All if not sure.">
-                        </span>
+                        <a href="@Url.Action("FAQ", "Home")#type">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the type of the plant you are looking for in your garden. Select All if not sure.  Click for more information.">
+                            </span>
+                        </a>
                     </label>
                     <div class="col-sm-8">
                         <select class="form-control" id="plantType">
@@ -36,13 +45,15 @@
                                 <option value="@Html.DisplayFor(modelItem => item.PlantType)">@Html.DisplayFor(modelItem => item.PlantType)</option>
                             }
                         </select>
-                        
+
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-4">
                         Maintenance&nbsp;
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the level of maintenance of the plants. Select All if not sure."></span>
+                        <a href="@Url.Action("FAQ", "Home")#main">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the level of maintenance of the plants. Select All if not sure.  Click for more information."></span>
+                        </a>
                     </label>
                     <div class="col-sm-8">
                         <select class="form-control" id="maintenance">
@@ -57,7 +68,9 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4">
                         Foliage Colour&nbsp;
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the leaf colour of the plant you are looking for in your garden. Select All if not sure."></span>
+                        <a href="@Url.Action("FAQ", "Home")#leaf">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the leaf colour of the plant you are looking for in your garden. Select All if not sure. Click for more information."></span>
+                        </a>
                     </label>
                     <div class="col-sm-8">
                         <select class="form-control" id="foliageColour">
@@ -213,7 +226,7 @@
                 var mainselected = $("#maintenance").val();
                 var foliageselected = $("#foliageColour").val();
 
-                //$(".card-container").show();
+                $(".card-container").show();
                 //$("#result").show();
 
                 if (typeselected != 'All') {
