@@ -20,8 +20,8 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44320</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HttpAuthModule, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\HttpAuthModule.2.2.2.0\lib\net45\HttpAuthModule.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -392,14 +395,16 @@
     <Content Include="Image\Home\invasive.jpg" />
     <Content Include="Image\Home\noninvasive.jpg" />
     <Content Include="Image\Invasives\gree_waste_disposal.jpg" />
-    <Content Include="Image\Invasives\Steps\step1.png" />
-    <Content Include="Image\Invasives\Steps\step2.png" />
-    <Content Include="Image\Invasives\Steps\step3.png" />
-    <Content Include="Image\Invasives\Steps\step4.png" />
-    <Content Include="Image\Invasives\Steps\step5.png" />
-    <Content Include="Image\Invasives\Steps\step6.png" />
+    <Content Include="Image\Invasives\Steps\step1.jpg" />
+    <Content Include="Image\Invasives\Steps\step2.jpg" />
+    <Content Include="Image\Invasives\Steps\step3.jpg" />
+    <Content Include="Image\Invasives\Steps\step4.jpg" />
+    <Content Include="Image\Invasives\Steps\step5.jpg" />
+    <Content Include="Image\Invasives\Steps\step6.jpg" />
     <Content Include="Image\Jumbotron\garden.jpg" />
-    <Content Include="Image\logo.jpg" />
+    <Content Include="Image\Logo_HG.png" />
+    <Content Include="Image\logo_flowers.png" />
+    <Content Include="Image\logo_text.png" />
     <Content Include="Image\logo.png" />
     <Content Include="Image\PlantImage\Invasive\Aloe_maculata2.jpg" />
     <Content Include="Image\PlantImage\Invasive\Aponogeton_distachyos.jpg" />
@@ -560,6 +565,7 @@
     <Content Include="Image\PlantImage\Invasive\WinterJasmine.jpg" />
     <Content Include="Image\PlantImage\Invasive\YellowAlstroemeria.jpg" />
     <Content Include="Image\PlantImage\Invasive\YellowAlstroemeria2.jpg" />
+    <Content Include="Image\PlantImage\Logo_PNG_Text.png" />
     <Content Include="Image\PlantImage\NonInvasive\acacia_decora.jpg" />
     <Content Include="Image\PlantImage\NonInvasive\acacia_maidenii.jpg" />
     <Content Include="Image\PlantImage\NonInvasive\acacia_melanoxylon.jpg" />

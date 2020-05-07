@@ -170,3 +170,10 @@ div.scrollmenu {
     font-weight:bold;
     margin-top:20px;
 }
+
+.anchor {
+    display: block;
+    height: 115px; /*same height as header*/
+    margin-top: -115px; /*same height as header*/
+    visibility: hidden;
+}

@@ -11,18 +11,30 @@
         &nbsp;/&nbsp;
         @ViewBag.Title
     </h5>
-    <h2 class="text-center">Find Invasive Plants</h2>
+    <h2 class="text-center">
+        Invasive Plant and Weed Search
+    </h2>
     <hr />
 </div>
 
-<div class="container" style="margin-top:60px">
+<div class="container text-center" style="padding-left:100px; padding-right:100px">
+    <h4>
+        Worried about which plants or weeds are invasive? Check out this list provided below and remove them from your garden to make your garden healthy!
+    </h4>
+    <p>Tip: Click the <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip"></span> icon to get more information about plant feature details.</p>
+</div>
+
+<div class="container" style="margin-top:40px">
     <div class="container-fluid" id="form">
         <div class="row">
             <div class="form-horizontal col-md-6 col-md-offset-3" id="formInvasive">
                 <div class="form-group">
                     <label class="control-label col-sm-4">
                         Plant Type&nbsp;
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the possible type of the plant. Select All if not sure."></span>
+                        <a href="@Url.Action("FAQ", "Home")#type">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the possible type of the plant. Select All if not sure. Click for more information.">
+                            </span>
+                        </a>
                     </label>
                     <div class="col-sm-8">
                         <select class="form-control" id="plantType">
@@ -37,7 +49,9 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4">
                         Flower Colour&nbsp;
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the flower colour of the plant. Select All if not sure."></span>
+                        <a href="@Url.Action("FAQ", "Home")#flower">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the flower colour of the plant. Select All if not sure.  Click for more information."></span>
+                        </a>
                     </label>
                     <div class="col-sm-8">
                         <select class="form-control" id="flowerColour">
@@ -52,7 +66,9 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4">
                         Leaf Colour&nbsp;
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the leaf colour of the plant. Select All if not sure."></span>
+                        <a href="@Url.Action("FAQ", "Home")#leaf">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the leaf colour of the plant. Select All if not sure.  Click for more information."></span>
+                        </a>
                     </label>
                     <div class="col-sm-8">
                         <select class="form-control" id="leafColour">
@@ -212,7 +228,7 @@
                 var flowerselected = $("#flowerColour").val();
                 var leafselected = $("#leafColour").val();
 
-                //$(".card-container").show();
+                $(".card-container").show();
                 //$("#result").show();
 
                 if (typeselected != 'All') {

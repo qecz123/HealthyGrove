@@ -1,24 +1,20 @@
 ﻿@{
-    ViewBag.Title = "Locate Nursery";
+    ViewBag.Title = "Locate nearest nursery near you";
 }
 
 <div class="container">
     <h5>
-        @Html.ActionLink("Home", "Index", "Home")
-        &nbsp;/&nbsp;
-        @Html.ActionLink("Find Non Invasive Plants", "Index", "NonInvasives")
-        &nbsp;/&nbsp;
-        @ViewBag.Title
+        <h5><a href='javascript:history.go(-1)'>Go Back to Previous Page</a></h5>
     </h5>
     <h2 class="text-center">@ViewBag.Title</h2>
     <hr />
 </div>
 
 <div class="container">
-    <p>To find Non-Invasive plant seeds near you:</p>
+    <p style="padding-bottom:10px;">Locate the nearest nursery for finding non-invasive plants</p>
     <label class="control-label">Enter your postcode</label>
-    <input type="text" class="form-control" id="postcode">
-    <button type="button" class="btn btn-default" onclick=findNursery()>Search</button>
+    <input type="text" class="form-control" style="padding-top:5px;" id="postcode">
+    <button type="button" class="btn btn-default" style="margin-top:10px;padding-top:10px;" onclick=findNursery()>Search</button>
     <div>&nbsp;</div>
     <div id="map" style="height: 600px;"></div>
 </div>
