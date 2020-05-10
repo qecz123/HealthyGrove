@@ -24,19 +24,19 @@
     </div>
     <div class="row step" id="step1">
         <div class="col-sm-4">
-            <img src="~/Image/Invasives/Steps/step1.jpg" class="img-responsive" />
+            <img src="~/Image/Invasives/Steps/step1.jpg" class="img-fluid" />
         </div>
         <div class="col-sm-8">
             <h5><strong>Step 1: Choose the right time for the task</strong></h5>
             <p>
                 It would be good when you choose to pull the weeds right after the rain. It’s makes overall work easier. A good would be a day after the Rain to pull weeds.
             </p>
-            <button type="button" id="toStep2" class="btn btn-default pull-right" style="margin-top:40px;" onclick=bnk1()>Click Here for step 2</button>
+            <button type="button" id="toStep2" class="btn btn-primary pull-right" style="margin-top:40px;" onclick=bnk1()>Click Here for step 2</button>
         </div>
     </div>
     <div class="row step" id="step2" style="display:none">
         <div class="col-sm-4">
-            <img src="~/Image/Invasives/Steps/step2.jpg" class="img-responsive" />
+            <img src="~/Image/Invasives/Steps/step2.jpg" class="img-fluid" />
         </div>
         <div class="col-sm-8">
             <h5><strong>Step 2: Pick up gardening gloves and  weeding tools.</strong></h5>
@@ -50,16 +50,16 @@
                 <li>If you're weeding abrasive or pointy weeds, like thistle, get gloves made of leather or another thick material.</li>
                 <li>When buying new weeding tool, make sure examine the sharpness of the tool.</li>
             </ul>
-            <button type="button" id="toStep3" class="btn btn-default pull-right" onclick=bnk2()>Click Here for step 3</button>
+            <button type="button" id="toStep3" class="btn btn-primary pull-right" onclick=bnk2()>Click Here for step 3</button>
         </div>
     </div>
     <div class="row step" id="step3" style="display:none">
-        <div class="col-sm-4"><img src="~/Image/Invasives/Steps/step3.jpg" class="img-responsive" /></div>
+        <div class="col-sm-4"><img src="~/Image/Invasives/Steps/step3.jpg" class="img-fluid" /></div>
         <div class="col-sm-8">
             <h5><strong>Step 3: Look for any garden hazard and remove them. Then identify, loosen and remove weeds.</strong></h5>
             <p>
                 Remove garden hazards and Identify weeds to remove</p>
-            <ul><li>Look out  If there are hoses left lying about, put them aside so you don't trip on them while weeding because they can be dangerous and can hurt you.</li><li></li>Walk around the garden and look for are that need to be weeded to make sure that you know what weeds that needs to be removed.</li></ul>
+            <ul><li>Look out  If there are hoses left lying about, put them aside so you don't trip on them while weeding because they can be dangerous and can hurt you.</li><li>Walk around the garden and look for are that need to be weeded to make sure that you know what weeds that needs to be removed.</li></ul>
             <strong>Tips</strong>
             <ul>
                 <li>
@@ -69,12 +69,12 @@
                     Look for weeds that can be edible so you can use them for salad and for stir fries.
                 </li>
             </ul>
-            <button type="button" id="toStep4" class="btn btn-default pull-right" onclick=bnk3()>Click Here for step 4</button>
+            <button type="button" id="toStep4" class="btn btn-primary pull-right" onclick=bnk3()>Click Here for step 4</button>
         </div>
     </div>
     <div class="row step" id="step4" style="display:none">
         <div class="col-sm-4">
-            <img src="~/Image/Invasives/Steps/step4.jpg" class="img-responsive" />
+            <img src="~/Image/Invasives/Steps/step4.jpg" class="img-fluid" />
         </div>
         <div class="col-sm-8">
             <h5><strong>Step 4: Kneel down or stand above the weed you want to remove. Loosen the soil where the stem of the weed meets the top of the garden bed.</strong></h5>
@@ -86,12 +86,12 @@
                 <li>Gradually break up the soil around the so you can access the taproot with your hands or weeding tool.</li>
             </ul>
             <strong>Tip: </strong> A cushion or knee pads would be helpful when you kneel down on concrete or rocks.
-            <button type="button" id="toStep5" class="btn btn-default pull-right" style="display:block;" onclick=bnk4()>Click Here for step 5</button>
+            <button type="button" id="toStep5" class="btn btn-primary pull-right" style="display:block;" onclick=bnk4()>Click Here for step 5</button>
         </div>
     </div>
     <div class="row step" id="step5" style="display:none">
         <div class="col-sm-4">
-            <img src="~/Image/Invasives/Steps/step5.jpg" class="img-responsive" />
+            <img src="~/Image/Invasives/Steps/step5.jpg" class="img-fluid" />
         </div>
         <div class="col-sm-8">
             <h5>
@@ -104,12 +104,12 @@
                 </li>
             </ul>
             <strong>Tip: </strong>Using weeding tool is always helpful to remove weeds deep inside.
-            <button type="button" id="toStep6" class="btn btn-default pull-right" style="display:block;" onclick=bnk5()>Click Here for step 6</button>
+            <button type="button" id="toStep6" class="btn btn-primary pull-right" style="display:block;" onclick=bnk5()>Click Here for step 6</button>
         </div>
     </div>
     <div class="row step" id="step6" style="display:none">
         <div class="col-sm-4">
-            <img src="~/Image/Invasives/Steps/step6.jpg" class="img-responsive" />
+            <img src="~/Image/Invasives/Steps/step6.jpg" class="img-fluid" />
         </div>
         <div class="col-sm-8">
             <h5><strong>Step 6: Collect the weeds and dispose of them.</strong></h5>
@@ -124,7 +124,7 @@
                     You can call local council and drop the sealed bag of the weeds to the advised location by the council.
                 </li>
             </ul>
-            <button type="button" id="final" class="btn btn-default pull-right" onclick=bnk6()>This is the final step</button>
+            <button type="button" id="final" class="btn btn-primary pull-right" onclick=bnk6()>This is the final step</button>
             <div>&nbsp;</div>
             <div id="finalstep" style="display:none">@Html.ActionLink("Learn how to dispose the green waste", "Disposal", "Invasives", new { @class = "btn btn-success" })</div>
         </div>

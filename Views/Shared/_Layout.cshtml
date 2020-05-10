@@ -6,18 +6,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - HealhyGrove</title>
-    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
     <link href="~/Content/custom.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <style>
 
         body {
             background-color: whitesmoke;
             font-family: "Exo 2";
-            font-size:15px;
+            font-size: 15px;
+            padding: 0px;
         }
     </style>
 
@@ -25,39 +27,32 @@
 
 <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#ecf0f1; border-color:darkgrey; padding-left:50px; padding-right:50px; padding-top:20px; padding-top:20px;">
+    <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light" style="background-color:#ecf0f1; border-color:darkgrey">
 
 
-            <div class="navbar-header">
+        <div class="navbar-brand">
+            <a href="@Url.Action("Index", "Home")"><img src="~/Image/logo.png" style="height:50px; padding-right:20px" /></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="nav navbar-nav ml-auto" style="color:darkgray">
+                <li class="nav-link">@Html.ActionLink("Home", "Index", "Home")</li>
+                <li class="nav-link">@Html.ActionLink("Solving Weed Problems", "AboutPlants", "Home")</li>
+                <li class="nav-link">@Html.ActionLink("Remove Weeds", "RemoveWeed", "Invasives")</li>
+                <li class="nav-link">@Html.ActionLink("Weed Disposal", "Disposal", "Invasives")</li>
+                <li class="nav-link">@Html.ActionLink("Nursery", "FindNursery", "Home")</li>
+                <li class="nav-link">@Html.ActionLink("Glossary", "FAQ", "Home")</li>
+            </ul>
 
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            @*@Html.Partial("_LoginPartial")*@
 
-                    <span class="icon-bar"></span>
+        </div>
 
-                    <span class="icon-bar"></span>
+    </nav>
 
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="@Url.Action("Index", "Home")"><img src="~/Image/logo.png" style="height:50px; padding-right:20px" /></a>
-
-            </div>
-            <div class="navbar-collapse collapse pull-right">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Solving Weed Problems", "AboutPlants", "Home")</li>
-                    <li>@Html.ActionLink("Remove Weeds", "RemoveWeed", "Invasives")</li>
-                    <li>@Html.ActionLink("Weed Disposal", "Disposal", "Invasives")</li>
-                    <li>@Html.ActionLink("Nursery", "FindNursery", "Home")</li>
-                    <li>@Html.ActionLink("Glossary", "FAQ", "Home")</li>
-                </ul>
-
-                @*@Html.Partial("_LoginPartial")*@
-
-            </div>
-
-    </div>
-
-    <div style="padding-top:20px; padding-bottom:60px">
+    <div style="padding-bottom:60px">
         @RenderBody()
     </div>
 

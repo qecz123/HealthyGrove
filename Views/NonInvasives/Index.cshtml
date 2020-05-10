@@ -23,22 +23,22 @@
     <h4>
         Looking for ‘good’ garden plants? Check out for non-invasive plants that are suitable for your garden based on your personal preference
     </h4>
-    <p>Tip: Click the <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip"></span> icon to get more information about plant feature details.</p>
+    <p>Tip: Click the <i class="fas fa-question" data-toggle="tooltip"></i> icon to get more information about plant feature details.</p>
 </div>
 
 <div class="container" style="margin-top:40px">
     <div class="container-fluid" id="form">
         <div class="row">
-            <div class="form-horizontal col-md-6 col-md-offset-3" id="formNonInvasive">
+            <div class="form-horizontal col-md-12" id="formNonInvasive">
                 <div class="form-group">
-                    <label class="control-label col-sm-4">
+                    <label class="control-label">
                         Plant Type&nbsp;
                         <a href="@Url.Action("FAQ", "Home")#type">
-                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the type of the plant you are looking for in your garden. Select All if not sure.  Click for more information.">
-                            </span>
+                            <i class="fas fa-question" data-toggle="tooltip" data-placement="right" title="Select the type of the plant you are looking for in your garden. Select All if not sure.  Click for more information.">
+                            </i>
                         </a>
                     </label>
-                    <div class="col-sm-8">
+                    <div>
                         <select class="form-control" id="plantType">
                             <option>All</option>
                             @foreach (var item in Model.OrderBy(x => x.PlantType).GroupBy(x => x.PlantType).Select(y => y.First()).ToList())
@@ -50,13 +50,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-4">
+                    <label class="control-label">
                         Maintenance&nbsp;
                         <a href="@Url.Action("FAQ", "Home")#main">
-                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the level of maintenance of the plants. Select All if not sure.  Click for more information."></span>
+                            <i class="fas fa-question" data-toggle="tooltip" data-placement="right" title="Select the level of maintenance of the plants. Select All if not sure.  Click for more information."></i>
                         </a>
                     </label>
-                    <div class="col-sm-8">
+                    <div>
                         <select class="form-control" id="maintenance">
                             <option>All</option>
                             @foreach (var item in Model.OrderBy(x => x.Maintenance).GroupBy(x => x.Maintenance).Select(y => y.First()).ToList())
@@ -67,13 +67,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-4">
+                    <label class="control-label">
                         Foliage Colour&nbsp;
                         <a href="@Url.Action("FAQ", "Home")#leaf">
-                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Select the leaf colour of the plant you are looking for in your garden. Select All if not sure. Click for more information."></span>
+                            <i class="fas fa-question" data-toggle="tooltip" data-placement="right" title="Select the leaf colour of the plant you are looking for in your garden. Select All if not sure. Click for more information."></i>
                         </a>
                     </label>
-                    <div class="col-sm-8">
+                    <div>
                         <select class="form-control" id="foliageColour">
                             <option>All</option>
                             @foreach (var item in Model.OrderBy(x => x.FoliageColour).GroupBy(x => x.FoliageColour).Select(y => y.First()).ToList())
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-4 col-sm-10">
+                    <div class="col-sm-offset-4">
                         <button type="button" id="submit" class="btn btn-success" onclick="submit()">Submit</button>
                     </div>
                 </div>
@@ -94,8 +94,8 @@
 </div>
 <div class="container-fluid" id="result" style="display:none">
 
-    <div class="row">
-        <div class="col-lg-offset-1">
+    <div class="row" style="margin-left:50px; margin-right:50px">
+        <div>
             <div>&nbsp;</div>
             <h2>View as:</h2>
             <div class="btn-group" data-toggle="buttons">
@@ -186,8 +186,8 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
-    @Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap.js")
+    @Scripts.Render("~/Scripts/DataTables/jquery.dataTables.min.js")
+    @Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap4.min.js")
     <script>
         $.fn.dataTable.ext.search.push(
             function (settings, data, dataIndex) {
