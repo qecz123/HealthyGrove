@@ -3,8 +3,6 @@
 @{
     ViewBag.Title = "Garden Planner";
 }
-<h2>@ViewBag.Title.</h2>
-
 <div class="container">
     <h5>
         @Html.ActionLink("Home", "Index", "Home")
@@ -72,21 +70,70 @@
     <div class="scrollmenu">
         @foreach (NonInvasive item in (List<NonInvasive>)Session["nonInvasivesCollection"])
         {
-        <div class="col-sm-12 col-md-4 card-container">
-            <div class="card-find">
+            <div class="col-sm-12 col-md-4 card-container">
+                <div class="card-find">
 
-                <div class="thumbnail">
-                    <div class="img-container"><img src="@Html.Raw(item.Image)" style="margin:auto;" class="text-center"></div>
-                    <div class="caption">
-                        <h3>@Html.DisplayFor(modelItem => item.CommonName)</h3>
-                        <h4 class="text-muted"><em>@Html.DisplayFor(modelItem => item.ScientificName)</em></h4>
-                        <hr />
-                        <p>
-                            <a href="@Url.Action("Details", new { id=item.NonInvasiveId })" class="btn btn-primary">Show Details <i class="glyphicon glyphicon-chevron-right"></i></a>
+                    <div class="thumbnail">
+                        <div class="img-container"><img src="@Html.Raw(item.Image)" style="height:400px;" class="img-fluid text-center"></div>
+                        <div class="caption">
+                            <h3>@Html.DisplayFor(modelItem => item.CommonName)</h3>
+                            <h4 class="text-muted"><em>@Html.DisplayFor(modelItem => item.ScientificName)</em></h4>
+                            <hr />
+                            <p>
+                                <button type="button" class="btn btn-primary" btn="addPlants" image="@Html.Raw(item.Image)" spread="@Html.Raw(item.SpreadRanges)">Add this plant to planner</button>
+                                <!--<a href="@Url.Action("Details", new { id=item.NonInvasiveId })" class="btn btn-primary">Show Details <i class="glyphicon glyphicon-chevron-right"></i></a>-->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         }
     </div>
+    <div id="plants"></div>
+    <div id="planner"></div>
 </div>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".btn[btn='addPlants']").click(function () {
+            var imgurl = $(this).attr('image');
+            var spread = $(this).attr('spread');
+            var img = document.createElement('img');
+            img.src = imgurl;
+            img.width = 100;
+            img.height = 100;
+            $("#plants").append(img)
+        })
+
+        $("#plants img").draggable({
+            stack: "#dragged img",
+            snap: true,
+        });
+
+        $('#planner img').draggable(
+        );
+
+        $('#planner').droppable({
+            accept: "img",
+        });
+    });
+</script>
+
+
+<style>
+    #plants {
+    }
+
+        #plants img {
+            float: left;
+            border-radius: 50%
+        }
+
+    #planner {
+        width: 500px;
+        height: 500px;
+        background-color: forestgreen
+    }
+</style>
