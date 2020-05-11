@@ -13,7 +13,9 @@
         &nbsp;/&nbsp;
         @ViewBag.Title
     </h5>
-    <h2 class="text-center">Non-Invasive Plant Search</h2>
+    <h2 class="text-center">Non-Invasive Plant Search
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()"></span>
+    </h2>
     <hr />
     <!-- Filters -->
 
@@ -110,7 +112,7 @@
             <div>&nbsp;</div>
         </div>
 
-        <div class="row" id="grid">
+        <div class="scrollmenu">
             @foreach (var item in Model)
             {
                 <div class="col-sm-12 col-md-4 card-container" data-plantType="@Html.Raw(item.PlantType)" data-foliageColour="@Html.Raw(item.FoliageColour)" data-maintenance="@Html.Raw(item.Maintenance)">
@@ -176,6 +178,9 @@
                             </td>
                             <td>
                                 @Html.ActionLink("Details", "Details", new { id = item.NonInvasiveId })
+                                &nbsp;
+                                @*<a href="#" class="save" data-id='@item.NonInvasiveId'>Save</a>*@
+                                <a href="@Url.Action("save", "NonInvasives", new { id = item.NonInvasiveId })">Save</a>
                             </td>
                         </tr>
                     }
@@ -183,6 +188,14 @@
             </table>
         </div>
     </div>
+</div>
+
+<div id="Sidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
 </div>
 
 @section Scripts {
@@ -268,5 +281,39 @@
 
     </script>
 }
+
+<script>
+    function openNav() {
+        document.getElementById("Sidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("Sidenav").style.width = "0";
+    }
+</script>
+
+@*<script type="text/javascript">
+        $(".save").click(function (e) {
+            e.preventDefault();//disable default behavior of anchor tag
+            var values = { id: $(this).attr('data-id') };
+            $.ajax({
+                type: "Get",
+                url: 'Url.Action("save", "NonInvasives")',
+                data: values,
+                dataType: "json",
+                success: function (response) {
+                    if (response.isAdded == "success") {
+                        alert("I just added this alert that my if isn't empty")
+                        location.reload();
+                    } else {
+                        alert("Some alert");
+                    }
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            });
+        })
+    </script>*@
 <link href="~/Content/DataTables/css/dataTables.bootstrap.min.css"
       rel="stylesheet" />

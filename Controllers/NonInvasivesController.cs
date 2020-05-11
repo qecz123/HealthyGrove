@@ -20,6 +20,12 @@ namespace HealthyGrove.Controllers
             return View(db.NonInvasiveSet.OrderBy(x => x.ScientificName).ToList());
         }
 
+        // GET: NonInvasives/Planner
+        public ActionResult Planner()
+        {
+            return View();
+        }
+
         // GET: NonInvasives/Details/5
         public ActionResult Details(int? id)
         {
@@ -33,6 +39,49 @@ namespace HealthyGrove.Controllers
                 return HttpNotFound();
             }
             return View(nonInvasive);
+        }
+
+        public ActionResult Save(int id)
+        {
+            if (Session["nonInvasivesCollection"] == null)
+            {
+                List<NonInvasive> collection = new List<NonInvasive>();
+                collection.Add(db.NonInvasiveSet.Find(id));
+                Session["nonInvasivesCollection"] = collection;
+            }
+            else
+            {
+                List<NonInvasive> collection = (List<NonInvasive>)Session["nonInvasivesCollection"];
+                int index = isExist(id);
+                if (index != -1)
+                {
+                    ModelState.AddModelError("Save Fail", "This invasive plant has already been saved in the temporary collection!");
+                }
+                else
+                {
+                    collection.Add(db.NonInvasiveSet.Find(id));
+                }
+                Session["nonInvasivesCollection"] = collection;
+            }
+            return RedirectToAction("Planner");//Json(new { isAdded = "success" }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Remove(int id)
+        {
+            List<NonInvasive> collection = (List<NonInvasive>)Session["nonInvasivesCollection"];
+            int index = isExist(id);
+            collection.RemoveAt(index);
+            Session["nonInvasivesCollection"] = collection;
+            return RedirectToAction("Planner");
+        }
+
+        private int isExist(int id)
+        {
+            List<NonInvasive> collection = (List<NonInvasive>)Session["nonInvasivesCollection"];
+            for (int i = 0; i < collection.Count; i++)
+                if (collection[i].NonInvasiveId.Equals(id))
+                    return i;
+            return -1;
         }
 
         protected override void Dispose(bool disposing)
