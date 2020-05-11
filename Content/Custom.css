@@ -138,8 +138,13 @@ div.scrollmenu {
     height:250px;
 }
 
-.thumbnail img:hover{
-    transform:scale(1.1,1.1);
+.card-container{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.thumbnail img:hover {
+    transform: scale(1.1,1.1);
 }
 
 .thumbnail {
@@ -197,7 +202,7 @@ div.scrollmenu {
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: #111;
+    background-color: ghostwhite;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;

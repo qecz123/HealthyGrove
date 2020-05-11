@@ -92,38 +92,43 @@
     <div id="planner"></div>
 </div>
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $(".btn[btn='addPlants']").click(function () {
-            var imgurl = $(this).attr('image');
-            var spread = $(this).attr('spread');
-            var img = document.createElement('img');
-            img.src = imgurl;
-            img.width = 100;
-            img.height = 100;
-            $("#plants").append(img)
-        })
+@section scripts {
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-        $("#plants img").draggable({
-            stack: "#dragged img",
-            snap: true,
+    <script>
+        $(document).ready(function () {
+            $(".btn[btn='addPlants']").click(function () {
+                var imgurl = $(this).attr('image');
+                var spread = $(this).attr('spread');
+                var img = document.createElement('img');
+                img.src = imgurl;
+                img.width = 100;
+                img.height = 100;
+                $("#plants").append(img)
+            })
+
+            $("#plants img").draggable({
+                stack: "#dragged img",
+                snap: true,
+            });
+
+            $('#planner img').draggable(
+            );
+
+            $('#planner').droppable({
+                accept: "img",
+            });
         });
-
-        $('#planner img').draggable(
-        );
-
-        $('#planner').droppable({
-            accept: "img",
-        });
-    });
-</script>
+    </script>
+}
 
 
 <style>
     #plants {
+        width: 800px;
+        height: 200px;
     }
 
         #plants img {
@@ -132,7 +137,7 @@
         }
 
     #planner {
-        width: 500px;
+        width: 800px;
         height: 500px;
         background-color: forestgreen
     }
