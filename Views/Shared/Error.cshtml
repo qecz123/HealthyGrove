@@ -1,9 +1,31 @@
 ﻿@model System.Web.Mvc.HandleErrorInfo
 
 @{
-    ViewBag.Title = "Error";
+    ViewBag.Title = "Something goes Wrong";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<div class="container">
+    <h5><a href='javascript:history.go(-1)'>Go Back to Previous Page</a></h5>
+    <h2 class="text-center">
+        <strong>
+            @ViewBag.Title
+        </strong>
+    </h2>
+    <hr />
+
+    <div class="text-center" style="color:red">
+        <h1>
+            Oooooooops!!!
+        </h1>
+        <div>&nbsp;</div>
+        <h3>
+            Sorry, The Page, You are Looking for is not found!
+        </h3>
+        <div>&nbsp;</div>
+        <h4>@Html.ActionLink("Go Back To Home Page", "Index", "Home")</h4>
+        <br />
+        <br />
+    </div>
+
+</div>
 

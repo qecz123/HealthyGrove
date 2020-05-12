@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Garden Planner";
 }
+
 <div class="container">
     <h5>
         @Html.ActionLink("Home", "Index", "Home")
@@ -16,57 +17,6 @@
 </div>
 
 <div class="container">
-    <!--<table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ScientificName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CommonName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PlantType)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Maintenance)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FoliageColour)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach (NonInvasive item in (List<NonInvasive>)Session["nonInvasivesCollection"])
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ScientificName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CommonName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PlantType)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Maintenance)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FoliageColour)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Details", "Details", new { id = item.NonInvasiveId })
-                        &nbsp;
-                        <a href="@Url.Action("Remove", "NonInvasives", new { id = item.NonInvasiveId })">Remove</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>-->
-
     <div class="scrollmenu">
         @foreach (NonInvasive item in (List<NonInvasive>)Session["nonInvasivesCollection"])
         {
@@ -75,47 +25,124 @@
 
                     <div class="thumbnail">
                         <div class="img-container"><img src="@Html.Raw(item.Image)" style="height:400px;" class="img-fluid text-center"></div>
-                        <div class="caption">
+                        <div class="caption justify-content-center text-center">
                             <h3>@Html.DisplayFor(modelItem => item.CommonName)</h3>
                             <h4 class="text-muted"><em>@Html.DisplayFor(modelItem => item.ScientificName)</em></h4>
+                            <h5>Approximate spread range</h5>
+                            <h5>@Html.DisplayFor(modelItem => item.SpreadRanges)</h5>
                             <hr />
-                            <p>
-                                <button type="button" class="btn btn-primary" btn="addPlants" image="@Html.Raw(item.Image)" spread="@Html.Raw(item.SpreadRanges)">Add this plant to planner</button>
-                                <!--<a href="@Url.Action("Details", new { id=item.NonInvasiveId })" class="btn btn-primary">Show Details <i class="glyphicon glyphicon-chevron-right"></i></a>-->
+                            <label class="row" style="margin:5px"><b>Mock plant diameter</b></label>
+                            <input class="row"
+                                   style="margin:5px; width:40px"
+                                   type="number"
+                                   min="1" step="1"
+                                   placeholder="int(m)"
+                                   pid="@Html.Raw(item.NonInvasiveId)"
+                                   oninput="validity.valid||(value='');"
+                                   required>
+                            <button class="row btn btn-primary"
+                                    style="margin:5px"
+                                    type="button"
+                                    btn="addPlants"
+                                    pid="@Html.Raw(item.NonInvasiveId)"
+                                    image="@Html.Raw(item.Image)"
+                                    spread="@Html.Raw(item.SpreadRanges)">
+                                Create mock plant
+                            </button>
+                            <!--<a href="@Url.Action("Details", new { id=item.NonInvasiveId })" class="btn btn-primary">Show Details <i class="glyphicon glyphicon-chevron-right"></i></a>-->
+
                         </div>
                     </div>
                 </div>
             </div>
         }
     </div>
-    <div id="plants"></div>
-    <div id="planner"></div>
+    <hr />
+    <div class="row">
+        <div class="col-8">
+            <div id="plants">
+
+            </div>
+        </div>
+        <div class="col-4" id="trash">
+            <p>Trash</p>
+        </div>
+    </div>
+    <hr />
+    <div>
+        <div id="planner"></div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#gardenModal">
+            Create Garden
+        </button>
+        <div class="modal" id="gardenModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Create a mock garden</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+
+                        <label><b>Enter the width of the garden</b></label>
+                        <input type="number" min="1" step="1" placeholder="Width integer in meter" id="width" oninput="validity.valid||(value='');" required>
+
+                        <label><b>Enter the width of the garden</b></label>
+                        <input type="number" min="1" step="1" placeholder="Height integer in meter" id="height" oninput="validity.valid||(value='');" required>
+
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="createGarden()" data-dismiss="modal">Create</button>
+                        <button type="button" class="btn btn-danger">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
 
-@section scripts {
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+@section Scripts {
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
     <script>
         $(document).ready(function () {
             $(".btn[btn='addPlants']").click(function () {
                 var imgurl = $(this).attr('image');
                 var spread = $(this).attr('spread');
+                var pid = $(this).attr('pid');
                 var img = document.createElement('img');
-                img.src = imgurl;
-                img.width = 100;
-                img.height = 100;
-                $("#plants").append(img)
-            })
-
-            $("#plants img").draggable({
-                stack: "#dragged img",
-                snap: true,
+                var range = $('input[pid="' + pid + '"]').val();
+                if (range > 0) {
+                    img.src = imgurl;
+                    img.width = range * 20;
+                    img.height = range * 20;
+                    $("#plants").append(img);
+                    console.log(jQuery);
+                    console.log(jQuery.ui);
+                    $("#plants img").draggable({
+                        stack: "#plants img",
+                        snap: true,
+                        grid: [10, 10],
+                        revert: "invalid"
+                    });
+                }
+                
             });
 
-            $('#planner img').draggable(
-            );
+            $('#trash').droppable({
+                drop: function (event, ui) {
+                    ui.draggable.remove();
+                }
+            });
 
             $('#planner').droppable({
                 accept: "img",
@@ -124,21 +151,38 @@
     </script>
 }
 
+<script>
+
+    function createGarden() {
+        var planner = document.getElementById("planner");
+        var width = $("#width").val();
+        var height = $("#height").val();
+        $('#gardenModal').modal('hide');
+        planner.style.width = width * 20 + "px";
+        planner.style.height = height * 20 + "px";
+        console.log(planner.width, planner.height);
+        console.log(planner);
+    }
+</script>
 
 <style>
     #plants {
-        width: 800px;
         height: 200px;
     }
 
         #plants img {
             float: left;
+            position: absolute;
             border-radius: 50%
         }
 
     #planner {
-        width: 800px;
-        height: 500px;
-        background-color: forestgreen
+        background-color: saddlebrown
+    }
+
+    #trash {
+        height: 100px;
+        width: 100px;
+        background-color: grey;
     }
 </style>
