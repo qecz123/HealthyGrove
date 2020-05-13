@@ -93,17 +93,17 @@
                 <div class="modal-body">
 
                     <label><b>Enter the width of the garden</b></label>
-                    <input type="number" min="2" step="1" placeholder="Width integer in meter" id="width" oninput="validity.valid||(value='');" required>
+                    <input type="number" min="3" step="1" placeholder="Width integer in meter" id="width" oninput="validity.valid||(value='');" required>
 
                     <label><b>Enter the width of the garden</b></label>
-                    <input type="number" min="2" step="1" placeholder="Height integer in meter" id="height" oninput="validity.valid||(value='');" required>
+                    <input type="number" min="3" step="1" placeholder="Height integer in meter" id="height" oninput="validity.valid||(value='');" required>
 
                 </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" onclick="createGarden()" data-dismiss="modal">Create</button>
-                    <button type="button" class="btn">Close</button>
+                    <button type="button" class="btn" data-dismiss="modal">Close</button>
                 </div>
 
             </div>
@@ -127,7 +127,7 @@
                     img.src = imgurl;
                     img.width = range * 20;
                     img.height = range * 20;
-                    //img.className = "round"
+                    img.style.cssText = "border-radius: 50%";
                     $("#garden").append(img);
                     console.log(jQuery);
                     console.log(jQuery.ui);
@@ -163,11 +163,15 @@
         var planner = document.getElementById("planner");
         var width = $("#width").val();
         var height = $("#height").val();
-        $('#gardenModal').modal('hide');
-        planner.style.width = width * 20 + "px";
+        //$('#gardenModal').modal('hide');
+        if (width < 1) { width = 15 };
+        if (height < 1) { height = 15 };
         garden.style.width = width * 20 + "px";
         garden.style.height = height * 20 + "px";
-        tool.style.width = width * 20 + "px";
+        if (width > 15) {
+            planner.style.width = width * 20 + "px";
+            tool.style.width = width * 20 + "px";
+        }
         console.log(garden.width, garden.height);
         console.log(planner);
     }
@@ -183,7 +187,6 @@
         #garden img {
             float: left;
             position: absolute;
-            border-radius: 50%
         }
 
     #planner {

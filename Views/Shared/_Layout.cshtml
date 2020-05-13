@@ -14,7 +14,7 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/custom.css" rel="stylesheet" />-->
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="~/Scripts/esm/popper.min.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="nav navbar-nav ml-auto" style="color:darkgray">
+            <ul class="nav navbar-nav ml-auto" >
                 <li class="nav-link">@Html.ActionLink("Home", "Index", "Home")</li>
                 <li class="nav-link">@Html.ActionLink("Solving Weed Problems", "AboutPlants", "Home")</li>
                 <li class="nav-link">@Html.ActionLink("Remove Weeds", "RemoveWeed", "Invasives")</li>
