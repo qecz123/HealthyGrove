@@ -31,14 +31,14 @@
                             <h5>Approximate spread range</h5>
                             <h5>@Html.DisplayFor(modelItem => item.SpreadRanges)</h5>
                             <hr />
-                            <label class="row" style="margin:5px"><b>Mock plant diameter</b></label>
-                            <input class="row"
-                                   style="margin:5px; width:40px"
+                            <label class="row text-center" style="margin:5px"><b>Mock plant diameter</b></label>
+                            <input class="row text-center"
+                                   style="margin:5px"
                                    type="number"
-                                   min="1" step="1"
+                                   min="0"
+                                   max="10"
                                    placeholder="int(m)"
                                    pid="@Html.Raw(item.NonInvasiveId)"
-                                   oninput="validity.valid||(value='');"
                                    required>
                             <button class="row btn btn-primary"
                                     style="margin:5px"
@@ -93,10 +93,10 @@
                 <div class="modal-body">
 
                     <label><b>Enter the width of the garden</b></label>
-                    <input type="number" min="3" step="1" placeholder="Width integer in meter" id="width" oninput="validity.valid||(value='');" required>
+                    <input type="number" min="3" placeholder="Width integer in meter" id="width" required>
 
                     <label><b>Enter the width of the garden</b></label>
-                    <input type="number" min="3" step="1" placeholder="Height integer in meter" id="height" oninput="validity.valid||(value='');" required>
+                    <input type="number" min="3" placeholder="Height integer in meter" id="height" required>
 
                 </div>
 
@@ -134,7 +134,7 @@
                     $("#garden img").draggable({
                         stack: "#garden img",
                         snap: true,
-                        grid: [10, 10],
+                        grid: [5, 5],
                         revert: "invalid",
                         containment: '#planner'
                     });
@@ -181,12 +181,12 @@
     #garden {
         height: 300px;
         width: 300px;
-        background-color: saddlebrown
+        background-color: saddlebrown;
+        position: relative;
     }
 
         #garden img {
-            float: left;
-            position: absolute;
+            position: absolute
         }
 
     #planner {
