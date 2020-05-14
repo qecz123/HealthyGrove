@@ -41,8 +41,9 @@ namespace HealthyGrove.Controllers
             return View(nonInvasive);
         }
 
-        public ActionResult Save(int id)
+        public void Save(int id)
         {
+            var result = db.NonInvasiveSet.OrderBy(x => x.ScientificName).ToList();
             if (Session["nonInvasivesCollection"] == null)
             {
                 List<NonInvasive> collection = new List<NonInvasive>();
@@ -63,7 +64,8 @@ namespace HealthyGrove.Controllers
                 }
                 Session["nonInvasivesCollection"] = collection;
             }
-            return RedirectToAction("Planner");//Json(new { isAdded = "success" }, JsonRequestBehavior.AllowGet);
+            //return PartialView("_partialPlant", result);
+            //return Json(new { stringContent = "Your String content here!"});
         }
 
         public ActionResult Remove(int id)
