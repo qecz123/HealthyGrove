@@ -43,7 +43,6 @@ namespace HealthyGrove.Controllers
 
         public void Save(int id)
         {
-            var result = db.NonInvasiveSet.OrderBy(x => x.ScientificName).ToList();
             if (Session["nonInvasivesCollection"] == null)
             {
                 List<NonInvasive> collection = new List<NonInvasive>();
@@ -68,13 +67,12 @@ namespace HealthyGrove.Controllers
             //return Json(new { stringContent = "Your String content here!"});
         }
 
-        public ActionResult Remove(int id)
+        public void Remove(int id)
         {
             List<NonInvasive> collection = (List<NonInvasive>)Session["nonInvasivesCollection"];
             int index = isExist(id);
             collection.RemoveAt(index);
             Session["nonInvasivesCollection"] = collection;
-            return RedirectToAction("Planner");
         }
 
         private int isExist(int id)

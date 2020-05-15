@@ -107,7 +107,7 @@
             <div>&nbsp;</div>
         
 
-        <div class="row text-center" id="grid">
+        <div class="row text-center animate-bottom" id="grid">
             @foreach (var item in Model)
             {
                 <div class="col-sm-12 col-md-4 card-container" data-plantType="@Html.Raw(item.PlantType)" data-flowerColour="@Html.Raw(item.FlowerColour)" data-leafColour="@Html.Raw(item.LeafColour)">
@@ -131,7 +131,7 @@
         </div>
 
 
-        <div class="container-fluid" id="table" style="display:none">
+        <div class="container-fluid animate-bottom" id="table" style="display:none">
             <table class="table">
                 <thead>
                     <tr>

@@ -159,9 +159,9 @@ div.scrollmenu {
     padding-bottom: 15px;
 }
 
-.thumbnail img:hover {
+/*.thumbnail img:hover {
     transform: scale(1.1,1.1);
-}
+}*/
 
 .thumbnail {
     overflow:hidden;
@@ -255,17 +255,6 @@ div.scrollmenu {
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
-    .sidebar .head .closebtn {
-        position: absolute;
-        top: 0;
-        right: 8px;
-        font-size: 36px;
-        text-decoration: none;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-    }
-
     .sidebar .planner {
         padding: 8px 8px 8px 32px;
     }
@@ -277,4 +266,89 @@ div.scrollmenu {
         background-color: #ecf0f1;
         padding: 24px 0px 24px 0px;
         box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    }
+
+/*page loader, reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_loader5 */
+#loader {
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #f8f9fa;
+    border-radius: 50%;
+    border-top: 16px solid #4CAF50;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin: 200px auto 200px auto;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0px;
+        opacity: 1
+    }
+}
+
+@keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0;
+        opacity: 1
+    }
+}
+
+.myicon {
+    position: absolute;
+    top: 0;
+    right: 8px;
+    font-size: 20px;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+    color: black;
+    text-decoration: none;
+}
+
+    .myicon:hover {
+        color: darkgray;
     }
