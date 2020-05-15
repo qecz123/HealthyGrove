@@ -89,7 +89,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-4">
-                            <button type="button" id="submit" class="btn btn-success" onclick="submit()">Submit</button>
+                            <button type="button" id="submit" class="btn btn-success" onclick="submit()">Find NonInvasive Plants</button>
                         </div>
                     </div>
                 </div>
@@ -98,8 +98,8 @@
     </div>
     <div class="container-fluid" id="result" style="display:none">
 
-        <div class="row" style="margin-left:50px; margin-right:50px">
-            <div>
+        <div style="margin-left:50px; margin-right:50px">
+            
                 <div>&nbsp;</div>
                 <h2>View as: </h2>
                 <div class="btn-group" data-toggle="buttons">
@@ -112,31 +112,34 @@
                 </div>
                 <div>&nbsp;</div>
 
-            </div>
+            
 
-            <div class="row text-center" id="grid">
-                @foreach (var item in Model)
-                {
-                    <div class="col-sm-12 col-md-4 card-container" data-plantType="@Html.Raw(item.PlantType)" data-foliageColour="@Html.Raw(item.FoliageColour)" data-maintenance="@Html.Raw(item.Maintenance)">
-                        <div class="card-find">
+                <div class="row text-center" id="grid">
 
-                            <div class="thumbnail">
-                                <div class="img-container"><img src="@Html.Raw(item.Image)" style="height:250px;" class="img-fluid"></div>
-                                <div class="caption">
-                                    <div style="height:100px;">
-                                        <h3>@Html.DisplayFor(modelItem => item.CommonName)</h3>
-                                        <h4 class="text-muted"><em>@Html.DisplayFor(modelItem => item.ScientificName)</em></h4>
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-12 col-md-4 card-container" data-plantType="@Html.Raw(item.PlantType)" data-foliageColour="@Html.Raw(item.FoliageColour)" data-maintenance="@Html.Raw(item.Maintenance)">
+                            <div class="card-find">
 
+                                <div class="thumbnail">
+                                    <div class="img-container"><img src="@Html.Raw(item.Image)" style="height:250px;" class="img-fluid"></div>
+                                    <div class="caption">
+                                        <div style="height:100px;">
+                                            <h3>@Html.DisplayFor(modelItem => item.CommonName)</h3>
+                                            <h4 class="text-muted"><em>@Html.DisplayFor(modelItem => item.ScientificName)</em></h4>
+
+                                        </div>
+                                        <hr />
+                                        <p>
+                                            <a href="@Url.Action("Details", new { id=item.NonInvasiveId })" class="btn btn-primary">Show Details <i class="glyphicon glyphicon-chevron-right"></i></a>
                                     </div>
-                                    <hr />
-                                    <p>
-                                        <a href="@Url.Action("Details", new { id=item.NonInvasiveId })" class="btn btn-primary">Show Details <i class="glyphicon glyphicon-chevron-right"></i></a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }
-            </div>
+                    }
+                    <div class="col-12 text-center" id="noresult" style="display:none; margin-top:10px"><p><strong>No Results!</strong></p></div>
+                </div>
+            
 
 
             <div class="container-fluid" id="table" style="display:none">
@@ -185,15 +188,15 @@
                                     @Html.ActionLink("Details", "Details", new { id = item.NonInvasiveId })
                                     &nbsp;
                                     @*<a href="#" class="save" data-id='@item.NonInvasiveId'>Save</a>
-                                        @Ajax.ActionLink("Save",
-                                                         "Save",
-                                                         new { id = item.NonInvasiveId },
-                                                         new AjaxOptions
-                                                         {
-                                                             UpdateTargetId = "mySidebar",
-                                                             InsertionMode = InsertionMode.Replace,
-                                                             HttpMethod = "GET"
-                                                         })*@
+                                @Ajax.ActionLink("Save",
+                                                 "Save",
+                                                 new { id = item.NonInvasiveId },
+                                                 new AjaxOptions
+                                                 {
+                                                     UpdateTargetId = "mySidebar",
+                                                     InsertionMode = InsertionMode.Replace,
+                                                     HttpMethod = "GET"
+                                                 })*@
                                     <a href="#" onclick="savePlant(@Html.Raw(item.NonInvasiveId))">Save</a>
                                 </td>
                             </tr>
@@ -209,10 +212,16 @@
     </div>
 </div>
 
-<div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-    <a href="@Url.Action("Planner", "NonInvasives")" class="planner" >Garden Planner>>></a>
-    <div>
+<div id="mySidebar" class="text-center sidebar">
+    <div class="head">
+        <h4 class="head">Saved Plants</h4>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    </div>
+    <div style="margin-top: 32px">
+        <a href="@Url.Action("Planner", "NonInvasives")" class=" planner btn btn-success">Garden Planner --></a>
+    </div>
+    <div id="savedplants">
+        <div class="col-12 text-center" id="noresult" style="display:none; margin-top:10px"><p><strong>No plant in this list!</strong></p></div>
         @foreach (NonInvasive item in (List<NonInvasive>)Session["nonInvasivesCollection"] ?? Enumerable.Empty<NonInvasive>())
         {
             <div class="col-sm-12 plant-container">
@@ -277,6 +286,7 @@
                 var foliageselected = $("#foliageColour").val();
 
                 $(".card-container").show();
+                $("#grid > #noresult").hide();
                 //$("#result").show();
 
                 if (typeselected != 'All') {
@@ -291,8 +301,21 @@
                     $('.card-container[data-foliageColour!="' + foliageselected + '"]').hide();
                 }
 
-
                 table.draw();
+
+                //check if all elements in .card-container is invisible
+                var allHidden = true;
+                $(".card-container").each(function () {
+                    if ($(this).is(':visible')) {
+                        console.log($(this).is(':visible'));
+                        allHidden = false;
+                        return false;
+                    }
+                });
+
+                if (allHidden) {
+                    $("#grid > #noresult").show();
+                }
 
             })
 
@@ -323,6 +346,7 @@
         document.getElementById("mySidebar").style.width = "300px";
         document.getElementById("main").style.marginRight = "300px";
         document.getElementById("mySidenav").style.display = "none";
+        changeNav();
     }
 
     function closeNav() {
@@ -331,7 +355,18 @@
         document.getElementById("mySidenav").style.display = "block";
     }
 
+    function changeNav() {
+        //check if all elements .plant-container is existed
+        if ($(".plant-container").length == 0) {
+            $("#savedplants > #noresult").show();
+        }
+        else {
+            $("#savedplants > #noresult").hide();
+        }
+    }
+
     function savePlant(id) {
+
         $.ajax(
             {
                 url: '/NonInvasives/Save',
@@ -344,7 +379,10 @@
                     alert("error");
                 }
             }).done(function (result) {
-                $("#mySidebar").load(window.location.href + " #mySidebar >*")
+                $("#mySidebar").load(window.location.href + " #mySidebar >*");
+                openNav()
+
+                
             });
     }
 </script>

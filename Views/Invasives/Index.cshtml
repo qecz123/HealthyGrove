@@ -82,7 +82,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-4">
-                        <button type="button" id="submit" class="btn btn-success" onclick="submit()">Submit</button>
+                        <button type="button" id="submit" class="btn btn-success" onclick="submit()">Find Invasive Plants</button>
                     </div>
                 </div>
             </div>
@@ -91,8 +91,8 @@
 </div>
 <div class="container-fluid" id="result" style="display:none">
 
-    <div class="row" style="margin-left:50px; margin-right:50px">
-        <div>
+    <div style="margin-left:50px; margin-right:50px">
+        
             <div>&nbsp;</div>
             <h2>View as:</h2>
             <div class="btn-group" data-toggle="buttons">
@@ -105,7 +105,7 @@
 
             </div>
             <div>&nbsp;</div>
-        </div>
+        
 
         <div class="row text-center" id="grid">
             @foreach (var item in Model)

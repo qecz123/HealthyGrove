@@ -16,7 +16,8 @@
     <hr />
 </div>
 
-<div class="container">
+<div class="container" id="plantlist">
+    <div class="col-12 text-center" id="noresult" style="display:none; margin-top:10px"><p><strong>No plant in this list!</strong></p></div>
     <div class="scrollmenu">
         @foreach (NonInvasive item in (List<NonInvasive>)Session["nonInvasivesCollection"] ?? Enumerable.Empty<NonInvasive>())
         {
@@ -61,24 +62,24 @@
     <div id="planner">
         <div class="row" id="garden"></div>
         <div class="row" id="tool">
-            <div id="gardenSize" 
-                 class="btn btn-primary" 
-                 data-toggle="modal" 
+            <div id="gardenSize"
+                 class="btn btn-primary"
+                 data-toggle="modal"
                  data-target="#gardenModal"
                  style="height: 100px; width:100px">
-                 Garden size
+                Garden size
             </div>
-            <div class="btn btn-secondary disabled" 
+            <div class="btn btn-secondary disabled"
                  id="trash"
                  style="height: 100px; width:100px">
-                 Trash
+                Trash
             </div>
         </div>
 
 
 
     </div>
-    
+
     <div class="modal" id="gardenModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -93,10 +94,10 @@
                 <div class="modal-body">
 
                     <label><b>Enter the width of the garden</b></label>
-                    <input type="number" min="3" placeholder="Width integer in meter" id="width" required>
+                    <input type="number" min="3" step="0.5" placeholder="Width integer in meter" id="width" required>
 
                     <label><b>Enter the width of the garden</b></label>
-                    <input type="number" min="3" placeholder="Height integer in meter" id="height" required>
+                    <input type="number" min="3" step="0.5" placeholder="Height integer in meter" id="height" required>
 
                 </div>
 
@@ -151,11 +152,31 @@
             $('#garden').droppable({
                 accept: "img",
             });
+
+            changeList();
+            $('#plantlist').on("change", function () {
+               
+            });
         });
+
+        
     </script>
 }
 
 <script>
+
+    function changeList() {
+        //check if all elements .plant-container is existed
+        if ($("#plantlist .thumbnail").length == 0) {
+            $("#plantlist > #noresult").show();
+        }
+        else {
+            $("#plantlist > #noresult").hide();
+        }
+
+        var a = $("#plantlist .thumbnail").length;
+        console.log(a)
+    }
 
     function createGarden() {
         var garden = document.getElementById("garden");
