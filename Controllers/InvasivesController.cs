@@ -24,6 +24,11 @@ namespace HealthyGrove.Controllers
             return View();
         }
 
+        public ActionResult Collection()
+        {
+            return View();
+        }
+
         // GET: Invasives
         public ActionResult Index()
         {
@@ -43,6 +48,49 @@ namespace HealthyGrove.Controllers
                 return HttpNotFound();
             }
             return View(invasive);
+        }
+
+        public void Save(int id)
+        {
+            if (Session["InvasivesCollection"] == null)
+            {
+                List<Invasive> collection = new List<Invasive>();
+                collection.Add(db.InvasiveSet.Find(id));
+                Session["InvasivesCollection"] = collection;
+            }
+            else
+            {
+                List<Invasive> collection = (List<Invasive>)Session["InvasivesCollection"];
+                int index = isExist(id);
+                if (index != -1)
+                {
+                    
+                }
+                else
+                {
+                    collection.Add(db.InvasiveSet.Find(id));
+                }
+                Session["InvasivesCollection"] = collection;
+            }
+            //return PartialView("_partialPlant", result);
+            //return Json(new { stringContent = "Your String content here!"});
+        }
+
+        public void Remove(int id)
+        {
+            List<Invasive> collection = (List<Invasive>)Session["InvasivesCollection"];
+            int index = isExist(id);
+            collection.RemoveAt(index);
+            Session["InvasivesCollection"] = collection;
+        }
+
+        private int isExist(int id)
+        {
+            List<Invasive> collection = (List<Invasive>)Session["InvasivesCollection"];
+            for (int i = 0; i < collection.Count; i++)
+                if (collection[i].InvasiveId.Equals(id))
+                    return i;
+            return -1;
         }
 
         protected override void Dispose(bool disposing)

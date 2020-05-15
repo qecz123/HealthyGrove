@@ -135,16 +135,46 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="margin-top:30px;">
+            <div class="col-sm-2" style="margin-top:30px;">
                 <div class="col-sm-6 col-sm-offset-1">
-                    @Html.ActionLink("Add this plant to collection", "Save", new { id = @Html.DisplayFor(model => model.NonInvasiveId), @class = "btn btn-success btn-block btn-lg" })
+                    <a href="#" class="btn btn-success" onclick="savePlant(@Html.DisplayFor(model => model.NonInvasiveId))">Save</a>
                 </div>
             </div>
-            <div class="row" style="margin-top:30px;">
-                <div class="col-sm-6 col-sm-offset-3">
-                    @Html.ActionLink("Interested? Find a nursery near you!", "FindNursery", "Home", null, new { @class = "btn btn-success btn-block btn-lg" })
+            <div class="col-sm-2" style="margin-top:30px;">
+                <div class="col-sm-6 col-sm-offset-1">
+                    @Html.ActionLink("Garden Planner", "Planner", "NonInvasives", new { @class = "btn btn-success" })
+                </div>
+            </div>
+            
+
+            <div class="col-sm-2" style="margin-top:30px;">
+                <div class="col-sm-6 col-sm-offset-1">
+                    @Html.ActionLink("Interested? Find a nursery near you!", "FindNursery", "Home", null, new { @class = "btn btn-success btn-lg" })
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function savePlant(id) {
+
+        $.ajax(
+            {
+                url: '/NonInvasives/Save',
+                type: 'GET',
+                data: { id: id },
+                async: true,
+                success: function (result) {
+                    alert("Plant saved!");
+
+                },
+                error: function () {
+                    alert("error");
+                }
+            }).done(function (result) {
+
+            });
+
+    }
+</script>

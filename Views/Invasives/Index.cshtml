@@ -1,98 +1,99 @@
 ﻿@model IEnumerable<HealthyGrove.Models.Invasive>
-
+@using HealthyGrove.Models;
 @{
     ViewBag.Title = "Find Invasive Plants";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    <h5>
-        @Html.ActionLink("Home", "Index", "Home")
-        &nbsp;/&nbsp;
-        @ViewBag.Title
-    </h5>
-    <h2 class="text-center">
-        Invasive Plant and Weed Search
-    </h2>
-    <hr />
-</div>
+<div id="main">
+    <div class="container">
+        <h5>
+            @Html.ActionLink("Home", "Index", "Home")
+            &nbsp;/&nbsp;
+            @ViewBag.Title
+        </h5>
+        <h2 class="text-center">
+            Invasive Plant and Weed Search
+        </h2>
+        <hr />
+    </div>
 
-<div class="container text-center" style="padding-left:100px; padding-right:100px">
-    <h4>
-        Worried about which plants or weeds are invasive? Check out this list provided below and remove them from your garden to make your garden healthy!
-    </h4>
-    <p>Tip: Click the <i class="fas fa-question" data-toggle="tooltip"></i> icon to get more information about plant feature details.</p>
-</div>
+    <div class="container text-center" style="padding-left:100px; padding-right:100px">
+        <h4>
+            Worried about which plants or weeds are invasive? Check out this list provided below and remove them from your garden to make your garden healthy!
+        </h4>
+        <p>Tip: Click the <i class="fas fa-question" data-toggle="tooltip"></i> icon to get more information about plant feature details.</p>
+    </div>
 
-<div class="container" style="margin-top:40px">
-    <div class="container-fluid" id="form">
-        <div class="row">
-            <div class="form-horizontal col-md-12" id="formInvasive">
-                <div class="form-group">
-                    <label class="control-label">
-                        Plant Type&nbsp;
-                        <a href="@Url.Action("FAQ", "Home")#type">
-                            <i class="fas fa-question" data-toggle="tooltip" data-placement="right" title="Select the possible type of the plant. Select All if not sure. Click for more information.">
-                            </i>
-                        </a>
-                    </label>
-                    <div>
-                        <select class="form-control" id="plantType">
-                            <option>All</option>
-                            @foreach (var item in Model.OrderBy(x => x.PlantType).GroupBy(x => x.PlantType).Select(y => y.First()).ToList())
-                            {
-                                <option value="@Html.DisplayFor(modelItem => item.PlantType)">@Html.DisplayFor(modelItem => item.PlantType)</option>
-                            }
-                        </select>
+    <div class="container" style="margin-top:40px">
+        <div class="container-fluid" id="form">
+            <div class="row">
+                <div class="form-horizontal col-md-12" id="formInvasive">
+                    <div class="form-group">
+                        <label class="control-label">
+                            Plant Type&nbsp;
+                            <a href="@Url.Action("FAQ", "Home")#type">
+                                <i class="fas fa-question" data-toggle="tooltip" data-placement="right" title="Select the possible type of the plant. Select All if not sure. Click for more information.">
+                                </i>
+                            </a>
+                        </label>
+                        <div>
+                            <select class="form-control" id="plantType">
+                                <option>All</option>
+                                @foreach (var item in Model.OrderBy(x => x.PlantType).GroupBy(x => x.PlantType).Select(y => y.First()).ToList())
+                                {
+                                    <option value="@Html.DisplayFor(modelItem => item.PlantType)">@Html.DisplayFor(modelItem => item.PlantType)</option>
+                                }
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">
-                        Flower Colour&nbsp;
-                        <a href="@Url.Action("FAQ", "Home")#flower">
-                            <i class="fas fa-question" data-toggle="tooltip" data-placement="right" title="Select the flower colour of the plant. Select All if not sure.  Click for more information."></i>
-                        </a>
-                    </label>
-                    <div>
-                        <select class="form-control" id="flowerColour">
-                            <option>All</option>
-                            @foreach (var item in Model.OrderBy(x => x.FlowerColour).GroupBy(x => x.FlowerColour).Select(y => y.First()).ToList())
-                            {
-                                <option value="@Html.DisplayFor(modelItem => item.FlowerColour)">@Html.DisplayFor(modelItem => item.FlowerColour)</option>
-                            }
-                        </select>
+                    <div class="form-group">
+                        <label class="control-label">
+                            Flower Colour&nbsp;
+                            <a href="@Url.Action("FAQ", "Home")#flower">
+                                <i class="fas fa-question" data-toggle="tooltip" data-placement="right" title="Select the flower colour of the plant. Select All if not sure.  Click for more information."></i>
+                            </a>
+                        </label>
+                        <div>
+                            <select class="form-control" id="flowerColour">
+                                <option>All</option>
+                                @foreach (var item in Model.OrderBy(x => x.FlowerColour).GroupBy(x => x.FlowerColour).Select(y => y.First()).ToList())
+                                {
+                                    <option value="@Html.DisplayFor(modelItem => item.FlowerColour)">@Html.DisplayFor(modelItem => item.FlowerColour)</option>
+                                }
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">
-                        Leaf Colour&nbsp;
-                        <a href="@Url.Action("FAQ", "Home")#leaf">
-                            <i class="fas fa-question" data-toggle="tooltip" data-placement="right" title="Select the leaf colour of the plant. Select All if not sure.  Click for more information."></i>
-                        </a>
-                    </label>
-                    <div>
-                        <select class="form-control" id="leafColour">
-                            <option>All</option>
-                            @foreach (var item in Model.OrderBy(x => x.LeafColour).GroupBy(x => x.LeafColour).Select(y => y.First()).ToList())
-                            {
-                                <option value="@Html.DisplayFor(modelItem => item.LeafColour)">@Html.DisplayFor(modelItem => item.LeafColour)</option>
-                            }
-                        </select>
+                    <div class="form-group">
+                        <label class="control-label">
+                            Leaf Colour&nbsp;
+                            <a href="@Url.Action("FAQ", "Home")#leaf">
+                                <i class="fas fa-question" data-toggle="tooltip" data-placement="right" title="Select the leaf colour of the plant. Select All if not sure.  Click for more information."></i>
+                            </a>
+                        </label>
+                        <div>
+                            <select class="form-control" id="leafColour">
+                                <option>All</option>
+                                @foreach (var item in Model.OrderBy(x => x.LeafColour).GroupBy(x => x.LeafColour).Select(y => y.First()).ToList())
+                                {
+                                    <option value="@Html.DisplayFor(modelItem => item.LeafColour)">@Html.DisplayFor(modelItem => item.LeafColour)</option>
+                                }
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-4">
-                        <button type="button" id="submit" class="btn btn-success" onclick="submit()">Find Invasive Plants</button>
+                    <div class="form-group">
+                        <div class="col-sm-offset-4">
+                            <button type="button" id="submit" class="btn btn-success" onclick="submit()">Find Invasive Plants</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="container-fluid" id="result" style="display:none">
+    <div class="container-fluid animate-bottom" id="result" style="display:none">
 
-    <div style="margin-left:50px; margin-right:50px">
-        
+        <div style="margin-left:50px; margin-right:50px">
+
             <div>&nbsp;</div>
             <h2>View as:</h2>
             <div class="btn-group" data-toggle="buttons">
@@ -105,82 +106,128 @@
 
             </div>
             <div>&nbsp;</div>
-        
 
-        <div class="row text-center animate-bottom" id="grid">
-            @foreach (var item in Model)
-            {
-                <div class="col-sm-12 col-md-4 card-container" data-plantType="@Html.Raw(item.PlantType)" data-flowerColour="@Html.Raw(item.FlowerColour)" data-leafColour="@Html.Raw(item.LeafColour)">
-                    <div class="card-find">
 
-                        <div class="thumbnail">
-                            <div class="img-container"><img src="@Html.Raw(item.Image)" style="height:250px;" class="img-fluid"></div>
-                            <div class="caption">
-                                <div style="height:100px;">
-                                    <h3>@Html.DisplayFor(modelItem => item.CommonName)</h3>
-                                    <h4 class="text-muted"><em>@Html.DisplayFor(modelItem => item.ScientificName)</em></h4>
+            <div class="row text-center animate-bottom" id="grid">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-12 col-md-4 card-container" data-plantType="@Html.Raw(item.PlantType)" data-flowerColour="@Html.Raw(item.FlowerColour)" data-leafColour="@Html.Raw(item.LeafColour)">
+                        <div class="card-find">
+
+                            <div class="thumbnail">
+                                <div class="img-container" style="position: relative">
+                                    <img src="@Html.Raw(item.Image)" style="height:250px;" class="img-fluid">
+                                    <a href="#" class="myicon2" onclick="savePlant(@Html.Raw(item.InvasiveId))"><i class="fas fa-heart"></i></a>
+                                </div>
+                                <div class="caption">
+                                    <div style="height:100px;">
+                                        <h3>@Html.DisplayFor(modelItem => item.CommonName)</h3>
+                                        <h4 class="text-muted"><em>@Html.DisplayFor(modelItem => item.ScientificName)</em></h4>
                                     </div>
                                     <hr />
                                     <p>
                                         <a href="@Url.Action("Details", new { id=item.InvasiveId })" class="btn btn-primary">Show Details <i class="glyphicon glyphicon-chevron-right"></i></a>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                }
+                <div class="col-12 text-center" id="noresult" style="display:none; margin-top:10px"><p><strong>No Results!</strong></p></div>
+            </div>
+
+
+            <div class="container-fluid animate-bottom" id="table" style="display:none">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ScientificName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CommonName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PlantType)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FlowerColour)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.LeafColour)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ScientificName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CommonName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PlantType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FlowerColour)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LeafColour)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Details", "Details", new { id = item.InvasiveId })
+                                    &nbsp;
+                                    <a href="#" onclick="savePlant(@Html.Raw(item.InvasiveId))">Save</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="mySidenav" class="sidenav">
+        <button class="btn" href="#" id="saved" onclick="openNav()">Saved Invasives</button>
+    </div>
+</div>
+
+<div id="mySidebar" class="text-center sidebar">
+    <div class="head">
+        <h4 class="head">Saved Plants</h4>
+        <a href="javascript:void(0)" class="myicon" onclick="closeNav()"><i class="fas fa-times"></i></a>
+    </div>
+    <div style="margin-top: 32px">
+        <a href="@Url.Action("Collection", "Invasives")" class="mybtn btn btn-success">Find My Saved Invasives</a>
+    </div>
+    <div id="savedplants">
+        <div class="col-12 text-center" id="noresult" style="display:none; margin-top:10px"><p><strong>No plant in this list!</strong></p></div>
+        @foreach (Invasive item in (List<Invasive>)Session["InvasivesCollection"] ?? Enumerable.Empty<Invasive>())
+        {
+            <div class="col-sm-12 plant-container">
+                <div class="card-find">
+
+                    <div class="thumbnail">
+                        <div class="img-container" style="position: relative">
+                            <img src="@Html.Raw(item.Image)" style="height:250px;" class="img-fluid text-center">
+                            <a href="#" class="myicon2" onclick="removePlant(@Html.Raw(item.InvasiveId))"><i class="fas fa-times"></i></a>
+                        </div>
+                        <div class="caption">
+                            <div style="height:80px;">
+                                <h3>@Html.DisplayFor(modelItem => item.CommonName)</h3>
+                                <h4 class="text-muted"><em>@Html.DisplayFor(modelItem => item.ScientificName)</em></h4>
+                            </div>
+                            <hr />
+                            <a href="@Url.Action("Details", new { id=item.InvasiveId })" class="btn btn-primary">Show Details <i class="glyphicon glyphicon-chevron-right"></i></a>
+                        </div>
                     </div>
                 </div>
-            }
-        </div>
-
-
-        <div class="container-fluid animate-bottom" id="table" style="display:none">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ScientificName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.CommonName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.PlantType)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.FlowerColour)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.LeafColour)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ScientificName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CommonName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PlantType)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FlowerColour)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.LeafColour)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Details", "Details", new { id = item.InvasiveId })
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+            </div>
+        }
     </div>
 </div>
 
@@ -246,6 +293,18 @@
 
                 table.draw();
 
+                //check if all elements in .card-container is invisible
+                var allHidden = true;
+                $(".card-container").each(function () {
+                    if ($(this).is(':visible')) {
+                        allHidden = false;
+                        return false;
+                    }
+                });
+
+                if (allHidden) {
+                    $("#grid > #noresult").show();
+                }
             })
 
             $("input[name='view']").on('change', function () {
@@ -259,6 +318,7 @@
                 }
             })
 
+            changeNav();
         });
 
         function submit() {
@@ -268,5 +328,75 @@
 
     </script>
 }
+
+<script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "350px";
+        document.getElementById("main").style.marginRight = "350px";
+        document.getElementById("mySidenav").style.display = "none";
+        changeNav();
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginRight = "0";
+        document.getElementById("mySidenav").style.display = "block";
+    }
+
+    function changeNav() {
+        //check if all elements .plant-container is existed
+        if ($(".plant-container").length == 0) {
+            $("#savedplants > #noresult").show();
+        }
+        else {
+            $("#savedplants > #noresult").hide();
+        }
+        console.log($(".plant-container").length);
+    }
+
+    function savePlant(id) {
+
+        $.ajax(
+            {
+                url: '/Invasives/Save',
+                type: 'GET',
+                data: { id: id },
+                async: true,
+                success: function (result) {
+                    $("#mySidebar").load(window.location.href + " #mySidebar >*", openNav());
+
+                },
+                error: function () {
+                    alert("error");
+                }
+            }).done(function (result) {
+
+            });
+
+    }
+
+    function removePlant(id) {
+        $.ajax(
+            {
+                url: '/Invasives/Remove',
+                type: 'GET',
+                data: { id: id },
+                async: true,
+                success: function (result) {
+                    $("#mySidebar").load(window.location.href + " #mySidebar >*");
+                    if ($(".plant-container").length == 1) {
+                        closeNav()
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+            }).done(function (result) {
+
+            });
+
+    }
+</script>
+
 <link href="~/Content/DataTables/css/dataTables.bootstrap4.min.css"
       rel="stylesheet" />

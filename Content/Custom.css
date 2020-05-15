@@ -255,10 +255,6 @@ div.scrollmenu {
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
-    .sidebar .planner {
-        padding: 8px 8px 8px 32px;
-    }
-
     .sidebar .head {
         position: absolute;
         top: 0;
@@ -267,6 +263,11 @@ div.scrollmenu {
         padding: 24px 0px 24px 0px;
         box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
     }
+
+.mybtn {
+    padding: 8px 8px 8px 8px;
+    vertical-align: middle;
+}
 
 /*page loader, reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_loader5 */
 #loader {
@@ -351,4 +352,20 @@ div.scrollmenu {
 
     .myicon:hover {
         color: darkgray;
+    }
+
+.myicon2 {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+    color: #efa4a4;
+    text-decoration: none;
+}
+
+    .myicon2:hover {
+        color: red;
     }

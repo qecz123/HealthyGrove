@@ -192,12 +192,45 @@
                         <div class="value">@Html.DisplayFor(model => model.LightNeeds)</div>
                     </div>
                 </div>
-                <div class="col-sm-2 col-sm-offset-4" style="vertical-align:baseline;">
-                        <div class="row text-center">
-                            @Html.ActionLink("Weed Removal Procedure", "RemoveWeed", "Invasives", new { @class = "btn btn-success btn-lg" })
-                        </div>
+                <div class="col-sm-2" style="margin-top:30px;">
+                    <div class="col-sm-6 col-sm-offset-1">
+                        <a href="#" class="btn btn-success" onclick="savePlant(@Html.DisplayFor(model => model.InvasiveId))">Save the invasive plant</a>
+                    </div>
+                </div>
+                <div class="col-sm-2" style="margin-top:30px;">
+                    <div class="col-sm-6 col-sm-offset-1">
+                        @Html.ActionLink("Invasives Plant Collection", "Collection", "Invasives", new { @class = "btn btn-success" })
+                    </div>
+                </div>
+                <div class="col-sm-2" style="margin-top:30px;">
+                    <div class="col-sm-6 col-sm-offset-1">
+                        @Html.ActionLink("Weed Removal Procedure", "RemoveWeed", "Invasives", new { @class = "btn btn-success btn-lg" })
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function savePlant(id) {
+
+        $.ajax(
+            {
+                url: '/Invasives/Save',
+                type: 'GET',
+                data: { id: id },
+                async: true,
+                success: function (result) {
+                    alert("Plant saved!");
+
+                },
+                error: function () {
+                    alert("error");
+                }
+            }).done(function (result) {
+
+            });
+
+    }
+</script>

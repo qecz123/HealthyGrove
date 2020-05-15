@@ -55,7 +55,7 @@ namespace HealthyGrove.Controllers
                 int index = isExist(id);
                 if (index != -1)
                 {
-                    ModelState.AddModelError("Save Fail", "This invasive plant has already been saved in the temporary collection!");
+                    
                 }
                 else
                 {
