@@ -208,7 +208,7 @@
                 data: { id: id },
                 async: true,
                 success: function (result) {
-                    location.reload();
+                    $("#plantlist").load(window.location.href + " #plantlist >*");
                 },
                 error: function () {
                     alert("error");

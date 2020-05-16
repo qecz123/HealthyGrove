@@ -16,204 +16,206 @@
     <hr />
 </div>
 
-<div class="container" id="plantlist">
-    <div class="col-12 text-center" id="noresult" style="display:none; margin-top:10px"><p><strong>No plant in this list!</strong></p></div>
-    <div class="scrollmenu">
-        @foreach (Invasive item in (List<Invasive>)Session["InvasivesCollection"] ?? Enumerable.Empty<Invasive>())
-        {
-            <div class="col-sm-12 col-md-4 card-container" pid="@Html.Raw(item.InvasiveId)">
-                <div class="card-find">
+<div id="collection">
+    <div class="container" id="plantlist">
+        <div class="col-12 text-center" id="noresult" style="display:none; margin-top:10px"><p><strong>No plant in this list!</strong></p></div>
+        <div class="scrollmenu">
+            @foreach (Invasive item in (List<Invasive>)Session["InvasivesCollection"] ?? Enumerable.Empty<Invasive>())
+            {
+                <div class="col-sm-12 col-md-4 card-container" pid="@Html.Raw(item.InvasiveId)">
+                    <div class="card-find">
 
-                    <div class="thumbnail" style="min-height:unset">
-                        <div class="img-container" style="position: relative">
-                            <img src="@Html.Raw(item.Image)" style="height:250px;" class="img-fluid text-center">
-                            <a href="#" class="myicon2" onclick="removePlant(@Html.Raw(item.InvasiveId))"><i class="fas fa-times"></i></a>
-                        </div>
-                        <div class="caption justify-content-center text-center">
-                            <h3>@Html.DisplayFor(modelItem => item.CommonName)</h3>
-                            <h4 class="text-muted"><em>@Html.DisplayFor(modelItem => item.ScientificName)</em></h4>
+                        <div class="thumbnail" style="min-height:unset">
+                            <div class="img-container" style="position: relative">
+                                <img src="@Html.Raw(item.Image)" style="height:250px;" class="img-fluid text-center">
+                                <a href="#" class="myicon2" onclick="removePlant(@Html.Raw(item.InvasiveId))"><i class="fas fa-times"></i></a>
+                            </div>
+                            <div class="caption justify-content-center text-center">
+                                <h3>@Html.DisplayFor(modelItem => item.CommonName)</h3>
+                                <h4 class="text-muted"><em>@Html.DisplayFor(modelItem => item.ScientificName)</em></h4>
+                            </div>
                         </div>
                     </div>
+                    <div id="pv" style="display:none">
+                        <div pv="PlantType">@Html.DisplayFor(modelItem => item.PlantType)</div>
+                        <div pv="WeedStatus">@Html.DisplayFor(modelItem => item.WeedStatus)</div>
+                        <div pv="VictorianStatus">@Html.DisplayFor(modelItem => item.VictorianStatus)</div>
+                        <div pv="Area_of_potential_distribution_remaining">@Html.DisplayFor(modelItem => item.Area_of_potential_distribution_remaining)</div>
+                        <div pv="Family">@Html.DisplayFor(modelItem => item.Family)</div>
+                        <div pv="VictorianBiomes">@Html.DisplayFor(modelItem => item.VictorianBiomes)</div>
+                        <div pv="Impact_on_natural_systems">@Html.DisplayFor(modelItem => item.Impact_on_natural_systems)</div>
+                        <div pv="Native">@Html.DisplayFor(modelItem => item.Native)</div>
+                        <div pv="Rate_of_dispersal">@Html.DisplayFor(modelItem => item.Rate_of_dispersal)</div>
+                        <div pv="HeightRanges">@Html.DisplayFor(modelItem => item.HeightRanges)</div>
+                        <div pv="SpreadRanges">@Html.DisplayFor(modelItem => item.SpreadRanges)</div>
+                        <div pv="FlowerColour">@Html.DisplayFor(modelItem => item.FlowerColour)</div>
+                        <div pv="LeafColour">@Html.DisplayFor(modelItem => item.LeafColour)</div>
+                        <div pv="ClimateZones">@Html.DisplayFor(modelItem => item.ClimateZones)</div>
+                        <div pv="Abcission">@Html.DisplayFor(modelItem => item.Abcission)</div>
+                        <div pv="SoilType">@Html.DisplayFor(modelItem => item.SoilType)</div>
+                        <div pv="LightNeeds">@Html.DisplayFor(modelItem => item.LightNeeds)</div>
+                        <div pv="Potential_for_invasion">@Html.DisplayFor(modelItem => item.Potential_for_invasion)</div>
+                    </div>
                 </div>
-                <div id="pv" style="display:none">
-                    <div pv="PlantType">@Html.DisplayFor(modelItem => item.PlantType)</div>
-                    <div pv="WeedStatus">@Html.DisplayFor(modelItem => item.WeedStatus)</div>
-                    <div pv="VictorianStatus">@Html.DisplayFor(modelItem => item.VictorianStatus)</div>
-                    <div pv="Area_of_potential_distribution_remaining">@Html.DisplayFor(modelItem => item.Area_of_potential_distribution_remaining)</div>
-                    <div pv="Family">@Html.DisplayFor(modelItem => item.Family)</div>
-                    <div pv="VictorianBiomes">@Html.DisplayFor(modelItem => item.VictorianBiomes)</div>
-                    <div pv="Impact_on_natural_systems">@Html.DisplayFor(modelItem => item.Impact_on_natural_systems)</div>
-                    <div pv="Native">@Html.DisplayFor(modelItem => item.Native)</div>
-                    <div pv="Rate_of_dispersal">@Html.DisplayFor(modelItem => item.Rate_of_dispersal)</div>
-                    <div pv="HeightRanges">@Html.DisplayFor(modelItem => item.HeightRanges)</div>
-                    <div pv="SpreadRanges">@Html.DisplayFor(modelItem => item.SpreadRanges)</div>
-                    <div pv="FlowerColour">@Html.DisplayFor(modelItem => item.FlowerColour)</div>
-                    <div pv="LeafColour">@Html.DisplayFor(modelItem => item.LeafColour)</div>
-                    <div pv="ClimateZones">@Html.DisplayFor(modelItem => item.ClimateZones)</div>
-                    <div pv="Abcission">@Html.DisplayFor(modelItem => item.Abcission)</div>
-                    <div pv="SoilType">@Html.DisplayFor(modelItem => item.SoilType)</div>
-                    <div pv="LightNeeds">@Html.DisplayFor(modelItem => item.LightNeeds)</div>
-                    <div pv="Potential_for_invasion">@Html.DisplayFor(modelItem => item.Potential_for_invasion)</div>
-                </div>
-            </div>
-        }
+            }
+        </div>
     </div>
-</div>
 
-<div class="col-12" style="margin-top:50px">
-    <div class="row">
-        <div class="col-sm-3">
-            <!-- Tile here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/plantType.png" class="img-circle img-fluid" />
-                <div class="title">Plant Type</div>
-                <div id="PlantType"></div>
+    <div class="col-12" style="margin-top:50px">
+        <div class="row">
+            <div class="col-sm-3">
+                <!-- Tile here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/plantType.png" class="img-circle img-fluid" />
+                    <div class="title">Plant Type</div>
+                    <div id="PlantType"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile 2 here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/grass.png" class="img-circle img-fluid" />
-                <div class="title">Weed Status</div>
-                <div id="WeedStatus"></div>
+            <div class="col-sm-3">
+                <!-- Tile 2 here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/grass.png" class="img-circle img-fluid" />
+                    <div class="title">Weed Status</div>
+                    <div id="WeedStatus"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile 2 here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/victorianStatus.png" class="img-circle img-fluid" />
-                <div class="title">Victorian Status</div>
-                <div id="VictorianStatus"></div>
+            <div class="col-sm-3">
+                <!-- Tile 2 here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/victorianStatus.png" class="img-circle img-fluid" />
+                    <div class="title">Victorian Status</div>
+                    <div id="VictorianStatus"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile 2 here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/areaOfPotentialDistributionRemaining.png" />
-                <div class="title">Area of Potential Spread Remaining</div>
-                <div id="Area_of_potential_distribution_remaining"></div>
+            <div class="col-sm-3">
+                <!-- Tile 2 here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/areaOfPotentialDistributionRemaining.png" />
+                    <div class="title">Area of Potential Spread Remaining</div>
+                    <div id="Area_of_potential_distribution_remaining"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile 2 here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/plantFamily.png" class="img-circle img-fluid" />
-                <div class="title">Family</div>
-                <div id="Family"></div>
+            <div class="col-sm-3">
+                <!-- Tile 2 here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/plantFamily.png" class="img-circle img-fluid" />
+                    <div class="title">Family</div>
+                    <div id="Family"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="col-sm-3">
-            <!-- Tile here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/vicBiome.png" class="img-circle img-fluid" />
-                <div class="title">Victorian Biomes</div>
-                <div id="VictorianBiomes"></div>
+            <div class="col-sm-3">
+                <!-- Tile here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/vicBiome.png" class="img-circle img-fluid" />
+                    <div class="title">Victorian Biomes</div>
+                    <div id="VictorianBiomes"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile 2 here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/impactOnNaturalSystems.png" class="img-circle img-fluid" />
-                <div class="title">Impact on Natural Systems</div>
-                <div id="Impact_on_natural_systems"></div>
+            <div class="col-sm-3">
+                <!-- Tile 2 here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/impactOnNaturalSystems.png" class="img-circle img-fluid" />
+                    <div class="title">Impact on Natural Systems</div>
+                    <div id="Impact_on_natural_systems"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile 2 here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/native.png" class="img-circle img-fluid" />
-                <div class="title">Native to Victoria?</div>
-                <div id="Native"></div>
+            <div class="col-sm-3">
+                <!-- Tile 2 here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/native.png" class="img-circle img-fluid" />
+                    <div class="title">Native to Victoria?</div>
+                    <div id="Native"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile 2 here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/rateOfDispersal.png" class="img-circle img-fluid" />
-                <div class="title">Rate of Dispersal</div>
-                <div id="Rate_of_dispersal"></div>
+            <div class="col-sm-3">
+                <!-- Tile 2 here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/rateOfDispersal.png" class="img-circle img-fluid" />
+                    <div class="title">Rate of Dispersal</div>
+                    <div id="Rate_of_dispersal"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile 2 here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/height.png" class="img-circle img-fluid" />
-                <div class="title">Height Ranges</div>
-                <div id="HeightRanges"></div>
+            <div class="col-sm-3">
+                <!-- Tile 2 here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/height.png" class="img-circle img-fluid" />
+                    <div class="title">Height Ranges</div>
+                    <div id="HeightRanges"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/spreadRanges.png" class="img-circle img-fluid" />
-                <div class="title">Spread Ranges</div>
-                <div id="SpreadRanges"></div>
+            <div class="col-sm-3">
+                <!-- Tile here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/spreadRanges.png" class="img-circle img-fluid" />
+                    <div class="title">Spread Ranges</div>
+                    <div id="SpreadRanges"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile 2 here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/flower.png" class="img-circle img-fluid" />
-                <div class="title">Flower Colour</div>
-                <div id="FlowerColour"></div>
+            <div class="col-sm-3">
+                <!-- Tile 2 here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/flower.png" class="img-circle img-fluid" />
+                    <div class="title">Flower Colour</div>
+                    <div id="FlowerColour"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile 2 here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/foliage.png" class="img-circle img-fluid" />
-                <div class="title">Leaf Colour</div>
-                <div id="LeafColour"></div>
+            <div class="col-sm-3">
+                <!-- Tile 2 here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/foliage.png" class="img-circle img-fluid" />
+                    <div class="title">Leaf Colour</div>
+                    <div id="LeafColour"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile 2 here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/climate.png" class="img-circle img-fluid" />
-                <div class="title">Climate</div>
-                <div id="ClimateZones"></div>
+            <div class="col-sm-3">
+                <!-- Tile 2 here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/climate.png" class="img-circle img-fluid" />
+                    <div class="title">Climate</div>
+                    <div id="ClimateZones"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile 2 here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/tree.png" class="img-circle img-fluid" />
-                <div class="title">Abcission</div>
-                <div id="Abcission"></div>
+            <div class="col-sm-3">
+                <!-- Tile 2 here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/tree.png" class="img-circle img-fluid" />
+                    <div class="title">Abcission</div>
+                    <div id="Abcission"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/soil.png" class="img-circle img-fluid" />
-                <div class="title">Soil Type</div>
-                <div id="SoilType"></div>
+            <div class="col-sm-3">
+                <!-- Tile here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/soil.png" class="img-circle img-fluid" />
+                    <div class="title">Soil Type</div>
+                    <div id="SoilType"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile 2 here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/sunlight.png" class="img-circle img-fluid" />
-                <div class="title">Light Needs</div>
-                <div id="LightNeeds"></div>
+            <div class="col-sm-3">
+                <!-- Tile 2 here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/sunlight.png" class="img-circle img-fluid" />
+                    <div class="title">Light Needs</div>
+                    <div id="LightNeeds"></div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <!-- Tile here -->
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/riskRating.png" class="img-fluid img-circle" />
-                <div class="title">Potential for Invasiveness</div>
-                <div id="Potential_for_invasion"></div>
+            <div class="col-sm-3">
+                <!-- Tile here -->
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/riskRating.png" class="img-fluid img-circle" />
+                    <div class="title">Potential for Invasiveness</div>
+                    <div id="Potential_for_invasion"></div>
+                </div>
             </div>
+            <!--<div class="col-sm-3">
+                <div class="card-tile text-center">
+                    <img src="~/Image/Icons/potentialForInvasion.png" class="img-fluid img-circle" />
+                    <div class="title">Potential for Invasion</div>
+                    <div id="Potential_for_invasion"></div>
+                </div>-->
         </div>
-        <!--<div class="col-sm-3">
-            <div class="card-tile text-center">
-                <img src="~/Image/Icons/potentialForInvasion.png" class="img-fluid img-circle" />
-                <div class="title">Potential for Invasion</div>
-                <div id="Potential_for_invasion"></div>
-            </div>-->
-        </div>
+    </div>
 </div>
 
 <script>
