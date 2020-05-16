@@ -182,12 +182,14 @@ div.scrollmenu {
     max-width:100%;
 }
 
-.card-tile{
-    background:#fff;
-    color:#666;
-    border-radius:5px;
-    box-shadow:0px 0px 5px rgba(0,0,0,0.5);
-    padding:10px;
+.card-tile {
+    background: #fff;
+    color: #666;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+    padding: 10px;
+    display: flex;
+    flex-direction: column
 }
 
 .card-tile img{
@@ -195,8 +197,7 @@ div.scrollmenu {
     background-color:#e6e6e6;
     margin:auto;
     text-align:center;
-    max-height:75px;
-    max-width:75px;
+    height: 80px;
 }
 
 .card-tile .title{
@@ -267,6 +268,7 @@ div.scrollmenu {
 .mybtn {
     padding: 8px 8px 8px 8px;
     vertical-align: middle;
+    width: 80%;
 }
 
 /*page loader, reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_loader5 */

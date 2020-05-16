@@ -19,30 +19,38 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 col-md-3">
-            <div class="col-sm-12 row-space">
-                <img id="plantimage" src=@Html.Raw(@Html.DisplayFor(model => model.Image)) class="img-fluid center-block" style="height: 400px" />
-            </div>
-            <div class="col-sm-12 text-center">
-                <h2 style="padding-bottom:0px;">@Html.DisplayFor(model => model.CommonName) <span class="lead">(Common name)</span></h2>
-                <h3 style="margin-top:5px;" class="text-muted"><em>@Html.DisplayFor(model => model.ScientificName)</em> <span class="lead">(Scientific name)</span></h3>
-            </div>
-            <div class="col-sm-12" style="margin-top:40px;">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <!-- Tile 2 here -->
-                        <div class="card-tile text-center">
-                            <img src="~/Image/Icons/climate.png" class="img-circle" />
-                            <div class="title">Climate</div>
-                            <div class="value">@Html.DisplayFor(model => model.ClimateZones)</div>
+        <div class="col-sm-12 col-md-4 card-container">
+            <div class="card-find">
+
+                <div class="thumbnail">
+                    <div class="img-container" style="position: relative">
+                        <img src=@Html.Raw(@Html.DisplayFor(model => model.Image)) style="height:250px;" class="img-fluid text-center">
+                    </div>
+                    <div class="caption justify-content-center text-center">
+                        <h2>@Html.DisplayFor(model => model.CommonName)</h2>
+                        <h3 class="text-muted"><em>@Html.DisplayFor(model => model.ScientificName)</em></h3>
+                        <hr />
+                        <div>
+                            <a href="#" class="mybtn btn btn-success" onclick="savePlant(@Html.DisplayFor(model => model.NonInvasiveId))">Save this plant to planner</a>
+
                         </div>
+                        &nbsp;
+                        <div>
+                            @Html.ActionLink("Garden Planner", "Planner", "NonInvasives", new { @class = "mybtn btn btn-success" })
+
+                        </div>
+                        &nbsp;
+                        <div>
+                            @Html.ActionLink("Interested? Find a nursery near you!", "FindNursery", "Home", null, new { @class = "mybtn btn btn-success" })
+                        </div>
+                        &nbsp;
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-9">
+        <div class="col-sm-12 col-md-8">
             <div class="row">
-                <div class="col-sm-2 col-sm-offset-1">
+                <div class="col-sm-3">
                     <!-- Tile here -->
                     <div class="card-tile text-center">
                         <img src="~/Image/Icons/plantType.png" class="img-circle" />
@@ -50,7 +58,7 @@
                         <div class="value">@Html.DisplayFor(model => model.PlantType)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
                         <img src="~/Image/Icons/native.png" class="img-circle" />
@@ -58,7 +66,7 @@
                         <div class="value">@Html.DisplayFor(model => model.Native)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
                         <img src="~/Image/Icons/height.png" class="img-circle" />
@@ -66,7 +74,7 @@
                         <div class="value">@Html.DisplayFor(model => model.HeightRanges)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile here -->
                     <div class="card-tile text-center">
                         <img src="~/Image/Icons/spreadRanges.png" class="img-circle" />
@@ -74,7 +82,7 @@
                         <div class="value">@Html.DisplayFor(model => model.SpreadRanges)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
                         <img src="~/Image/Icons/flower.png" class="img-circle" />
@@ -82,9 +90,7 @@
                         <div class="value">@Html.DisplayFor(model => model.FlowerColour)</div>
                     </div>
                 </div>
-            </div>
-            <div class="row" style="margin-top:30px;">
-                <div class="col-sm-2 col-sm-offset-1">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
                         <img src="~/Image/Icons/foliage.png" class="img-circle" />
@@ -92,7 +98,7 @@
                         <div class="value">@Html.DisplayFor(model => model.FoliageColour)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
                         <img src="~/Image/Icons/tree.png" class="img-circle" />
@@ -100,7 +106,7 @@
                         <div class="value">@Html.DisplayFor(model => model.Abcission)</div>
                     </div>
                 </div>
-                <div class="col-sm-2" style="vertical-align:baseline;">
+                <div class="col-sm-3">
                     <!-- Tile here -->
                     <div class="card-tile text-center">
                         <img src="~/Image/Icons/soil.png" class="img-circle" />
@@ -108,15 +114,15 @@
                         <div class="value">@Html.DisplayFor(model => model.SoilType)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
-                    <div class="card-tile text-center" style="vertical-align:baseline;">
+                    <div class="card-tile text-center">
                         <img src="~/Image/Icons/sunlight.png" class="img-circle" />
                         <div class="title">Light Needs</div>
                         <div class="value">@Html.DisplayFor(model => model.LightNeeds)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile here -->
                     <div class="card-tile text-center">
                         <img src="~/Image/Icons/maintenance.png" class="img-circle" />
@@ -124,9 +130,7 @@
                         <div class="value">@Html.DisplayFor(model => model.Maintenance)</div>
                     </div>
                 </div>
-            </div>
-            <div class="row" style="margin-top:30px;">
-                <div class="col-sm-2 col-sm-offset-1">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
                         <img src="~/Image/Icons/frostTolerance.png" class="img-circle" />
@@ -134,22 +138,13 @@
                         <div class="value">@Html.DisplayFor(model => model.FrostTolerance)</div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-2" style="margin-top:30px;">
-                <div class="col-sm-6 col-sm-offset-1">
-                    <a href="#" class="btn btn-success" onclick="savePlant(@Html.DisplayFor(model => model.NonInvasiveId))">Save</a>
-                </div>
-            </div>
-            <div class="col-sm-2" style="margin-top:30px;">
-                <div class="col-sm-6 col-sm-offset-1">
-                    @Html.ActionLink("Garden Planner", "Planner", "NonInvasives", new { @class = "btn btn-success" })
-                </div>
-            </div>
-            
-
-            <div class="col-sm-2" style="margin-top:30px;">
-                <div class="col-sm-6 col-sm-offset-1">
-                    @Html.ActionLink("Interested? Find a nursery near you!", "FindNursery", "Home", null, new { @class = "btn btn-success btn-lg" })
+                <div class="col-sm-3">
+                    <!-- Tile 2 here -->
+                    <div class="card-tile text-center">
+                        <img src="~/Image/Icons/climate.png" class="img-circle" />
+                        <div class="title">Climate</div>
+                        <div class="value">@Html.DisplayFor(model => model.ClimateZones)</div>
+                    </div>
                 </div>
             </div>
         </div>

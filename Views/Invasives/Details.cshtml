@@ -19,194 +19,192 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 col-md-3">
-            <div class="col-sm-12 row-space">
-                <img id="plantimage" src=@Html.Raw(@Html.DisplayFor(model => model.Image)) class="img-fluid center-block" style="height: 400px" />
-            </div>
-            <div class="col-sm-12 text-center">
-                <h2 style="padding-bottom:0px;">@Html.DisplayFor(model => model.CommonName)</h2>
-                <h3 style="margin-top:5px;" class="text-muted"><em>@Html.DisplayFor(model => model.ScientificName)</em></h3>
-            </div>
-            <div class="col-sm-12" style="margin-top:40px;">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <!-- Tile here -->
-                        <div class="card-tile text-center">
-                            <img src="~/Image/Icons/riskRating.png" class="img-circle" />
-                            <div class="title">Potential for Invasiveness</div>
-                            <div class="value">@Html.DisplayFor(model => model.Potential_for_invasion)</div>
+            <div class="col-sm-12 col-md-4 card-container">
+                <div class="card-find">
+
+                    <div class="thumbnail">
+                        <div class="img-container" style="position: relative">
+                            <img src=@Html.Raw(@Html.DisplayFor(model => model.Image)) style="height:250px;" class="img-fluid text-center">
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <!-- Tile 2 here -->
-                        <div class="card-tile text-center">
-                            <img src="~/Image/Icons/potentialForInvasion.png" class="img-circle" />
-                            <div class="title">Potential for Invasion</div>
-                            <div class="value">@Html.DisplayFor(model => model.Potential_for_invasion)</div>
+                        <div class="caption justify-content-center text-center">
+                            <h2>@Html.DisplayFor(model => model.CommonName)</h2>
+                            <h3 class="text-muted"><em>@Html.DisplayFor(model => model.ScientificName)</em></h3>
+                            <hr />
+                            <div>
+                                <a href="#" class="mybtn btn btn-success" onclick="savePlant(@Html.DisplayFor(model => model.InvasiveId))">Save the invasive plant</a>
+                            </div>
+                            &nbsp;
+                            <div>
+                                @Html.ActionLink("Invasives Plant Collection", "Collection", "Invasives", new { @class = "mybtn btn btn-success" })
+
+                            </div>
+                            &nbsp;
+                            <div>
+                                @Html.ActionLink("Weed Removal Procedure", "RemoveWeed", "Invasives", new { @class = "mybtn btn btn-success" })
+
+                            </div>
+                            &nbsp;
                         </div>
-                    </div>
                 </div>
             </div>
+          
         </div>
-        <div class="col-sm-12 col-md-9">
+        <div class="col-sm-12 col-md-8">
             <div class="row">
-                <div class="col-sm-2 col-sm-offset-1">
+                <div class="col-sm-3">
                     <!-- Tile here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/plantType.png" class="img-circle" />
+                        <img src="~/Image/Icons/plantType.png" class="img-circle img-fluid" />
                         <div class="title">Plant Type</div>
                         <div class="value">@Html.DisplayFor(model => model.PlantType)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/grass.png" class="img-circle" />
+                        <img src="~/Image/Icons/grass.png" class="img-circle img-fluid" />
                         <div class="title">Weed Status</div>
                         <div class="value">@Html.DisplayFor(model => model.WeedStatus)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/victorianStatus.png" class="img-circle" />
+                        <img src="~/Image/Icons/victorianStatus.png" class="img-circle img-fluid" />
                         <div class="title">Victorian Status</div>
                         <div class="value">@Html.DisplayFor(model => model.VictorianStatus)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/areaOfPotentialDistributionRemaining.png" class="img-circle" />
+                        <img src="~/Image/Icons/areaOfPotentialDistributionRemaining.png"  />
                         <div class="title">Area of Potential Spread Remaining</div>
                         <div class="value">@Html.DisplayFor(model => model.Area_of_potential_distribution_remaining)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/plantFamily.png" class="img-circle" />
+                        <img src="~/Image/Icons/plantFamily.png" class="img-circle img-fluid" />
                         <div class="title">Family</div>
                         <div class="value">@Html.DisplayFor(model => model.Family)</div>
                     </div>
                 </div>
-            </div>
-            <div class="row" style="margin-top:30px">
-                <div class="col-sm-2 col-sm-offset-1">
+
+                <div class="col-sm-3">
                     <!-- Tile here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/vicBiome.png" class="img-circle" />
+                        <img src="~/Image/Icons/vicBiome.png" class="img-circle img-fluid" />
                         <div class="title">Victorian Biomes</div>
                         <div class="value">@Html.DisplayFor(model => model.VictorianBiomes)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/impactOnNaturalSystems.png" class="img-circle" />
+                        <img src="~/Image/Icons/impactOnNaturalSystems.png" class="img-circle img-fluid" />
                         <div class="title">Impact on Natural Systems</div>
                         <div class="value">@Html.DisplayFor(model => model.Impact_on_natural_systems)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/native.png" class="img-circle" />
+                        <img src="~/Image/Icons/native.png" class="img-circle img-fluid" />
                         <div class="title">Native to Victoria?</div>
                         <div class="value">@Html.DisplayFor(model => model.Native)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/rateOfDispersal.png" class="img-circle" />
+                        <img src="~/Image/Icons/rateOfDispersal.png" class="img-circle img-fluid" />
                         <div class="title">Rate of Dispersal</div>
                         <div class="value">@Html.DisplayFor(model => model.Rate_of_dispersal)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/height.png" class="img-circle" />
+                        <img src="~/Image/Icons/height.png" class="img-circle img-fluid" />
                         <div class="title">Height Ranges</div>
                         <div class="value">@Html.DisplayFor(model => model.HeightRanges)</div>
                     </div>
                 </div>
-            </div>
-            <div class="row" style="margin-top:30px;">
-                <div class="col-sm-2 col-sm-offset-1">
+                <div class="col-sm-3">
                     <!-- Tile here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/spreadRanges.png" class="img-circle" />
+                        <img src="~/Image/Icons/spreadRanges.png" class="img-circle img-fluid" />
                         <div class="title">Spread Ranges</div>
                         <div class="value">@Html.DisplayFor(model => model.SpreadRanges)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/flower.png" class="img-circle" />
+                        <img src="~/Image/Icons/flower.png" class="img-circle img-fluid" />
                         <div class="title">Flower Colour</div>
                         <div class="value">@Html.DisplayFor(model => model.FlowerColour)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/foliage.png" class="img-circle" />
+                        <img src="~/Image/Icons/foliage.png" class="img-circle img-fluid" />
                         <div class="title">Leaf Colour</div>
                         <div class="value">@Html.DisplayFor(model => model.LeafColour)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/climate.png" class="img-circle" />
+                        <img src="~/Image/Icons/climate.png" class="img-circle img-fluid" />
                         <div class="title">Climate</div>
                         <div class="value">@Html.DisplayFor(model => model.ClimateZones)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/tree.png" class="img-circle" />
+                        <img src="~/Image/Icons/tree.png" class="img-circle img-fluid" />
                         <div class="title">Abcission</div>
                         <div class="value">@Html.DisplayFor(model => model.Abcission)</div>
                     </div>
                 </div>
-            </div>
-            <div class="row" style="margin-top:30px;">
-                <div class="col-sm-2 col-sm-offset-1" style="vertical-align:baseline;">
+                <div class="col-sm-3">
                     <!-- Tile here -->
                     <div class="card-tile text-center">
-                        <img src="~/Image/Icons/soil.png" class="img-circle" />
+                        <img src="~/Image/Icons/soil.png" class="img-circle img-fluid" />
                         <div class="title">Soil Type</div>
                         <div class="value">@Html.DisplayFor(model => model.SoilType)</div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <!-- Tile 2 here -->
-                    <div class="card-tile text-center" style="vertical-align:baseline;">
-                        <img src="~/Image/Icons/sunlight.png" class="img-circle" />
+                    <div class="card-tile text-center">
+                        <img src="~/Image/Icons/sunlight.png" class="img-circle img-fluid" />
                         <div class="title">Light Needs</div>
                         <div class="value">@Html.DisplayFor(model => model.LightNeeds)</div>
                     </div>
                 </div>
-                <div class="col-sm-2" style="margin-top:30px;">
-                    <div class="col-sm-6 col-sm-offset-1">
-                        <a href="#" class="btn btn-success" onclick="savePlant(@Html.DisplayFor(model => model.InvasiveId))">Save the invasive plant</a>
+                <div class="col-sm-3">
+                    <!-- Tile here -->
+                    <div class="card-tile text-center">
+                        <img src="~/Image/Icons/riskRating.png" class="img-fluid img-circle" />
+                        <div class="title">Potential for Invasiveness</div>
+                        <div class="value">@Html.DisplayFor(model => model.Potential_for_invasion)</div>
                     </div>
                 </div>
-                <div class="col-sm-2" style="margin-top:30px;">
-                    <div class="col-sm-6 col-sm-offset-1">
-                        @Html.ActionLink("Invasives Plant Collection", "Collection", "Invasives", new { @class = "btn btn-success" })
+                <div class="col-sm-3">
+                    <!-- Tile 2 here -->
+                    <div class="card-tile text-center">
+                        <img src="~/Image/Icons/potentialForInvasion.png" class="img-fluid img-circle" />
+                        <div class="title">Potential for Invasion</div>
+                        <div class="value">@Html.DisplayFor(model => model.Potential_for_invasion)</div>
                     </div>
                 </div>
-                <div class="col-sm-2" style="margin-top:30px;">
-                    <div class="col-sm-6 col-sm-offset-1">
-                        @Html.ActionLink("Weed Removal Procedure", "RemoveWeed", "Invasives", new { @class = "btn btn-success btn-lg" })
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
