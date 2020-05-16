@@ -24,7 +24,7 @@
             <div class="col-sm-12 col-md-4 card-container" pid="@Html.Raw(item.InvasiveId)">
                 <div class="card-find">
 
-                    <div class="thumbnail">
+                    <div class="thumbnail" style="min-height:unset">
                         <div class="img-container" style="position: relative">
                             <img src="@Html.Raw(item.Image)" style="height:250px;" class="img-fluid text-center">
                             <a href="#" class="myicon2" onclick="removePlant(@Html.Raw(item.InvasiveId))"><i class="fas fa-times"></i></a>
@@ -214,12 +214,12 @@
                 <div id="Potential_for_invasion"></div>
             </div>-->
         </div>
-
-    </div>
 </div>
 
 <script>
     $(document).ready(function () {
+        changeList();
+
         $(".card-container").on("mouseenter", function () {
             //var id = $(".card-container").attr("pid");
             var PlantType = $(this).children("#pv").children("div[pv='PlantType']").text();
@@ -283,9 +283,7 @@
                 data: { id: id },
                 async: true,
                 success: function (result) {
-                    $("#plantlist").load(window.location.href + " #plantlist >*");
-                    if ($(".plant-container").length == 1) {
-                    }
+                    location.reload();
                 },
                 error: function () {
                     alert("error");
